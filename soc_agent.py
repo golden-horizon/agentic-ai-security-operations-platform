@@ -1,11 +1,19 @@
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from pydantic_ai import Agent
-from tools import analyze_incident
 
 soc_agent = Agent(
-    'openai:gpt-4o-mini',
+    "openai:gpt-4o-mini",
     system_prompt="""
-You are an AI SOC Analyst.
-Analyze security incidents and provide concise reports.
+You are an expert SOC Analyst.
+Analyze incidents and provide:
+- Attack Type
+- Severity
+- MITRE ATT&CK
+- Reason
+- Recommended Actions
 """
 )
 
@@ -17,19 +25,7 @@ location=unknown
 """
 
 result = soc_agent.run_sync(
-f"""
-Analyze this incident:
-
-{incident}
-
-Use the following detection result:
-
-{analyze_incident({
-    "user":"admin",
-    "source_ip":"45.83.12.10",
-    "failed_attempts":8
-})}
-"""
+    f"Analyze this security incident:\n\n{incident}"
 )
 
 print(result.output)
