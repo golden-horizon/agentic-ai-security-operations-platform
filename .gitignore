@@ -1,0 +1,4 @@
+.env
+__pycache__/
+*.pyc
+incident_reports.json
