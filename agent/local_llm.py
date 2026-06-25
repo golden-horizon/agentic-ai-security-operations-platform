@@ -1,6 +1,5 @@
 import ollama
-
-MODEL_NAME = "qwen2.5:3b"
+from config.settings import MODEL_NAME
 
 
 def ask_local_model(prompt: str) -> str:

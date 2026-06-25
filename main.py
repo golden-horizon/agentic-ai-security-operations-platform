@@ -1,18 +1,14 @@
 import json
-from pathlib import Path
 from agent.soc_analyzer import analyze_incident
-
-
-INPUT_FILE = "sample_incidents.json"
-OUTPUT_FILE = "reports/local_soc_reports.json"
+from config.settings import SAMPLE_INCIDENTS_FILE, LOCAL_SOC_REPORT_FILE, REPORTS_DIR
 
 
 def main():
-    if not Path(INPUT_FILE).exists():
-        print(f"ERROR: {INPUT_FILE} not found.")
+    if not SAMPLE_INCIDENTS_FILE.exists():
+        print(f"ERROR: {SAMPLE_INCIDENTS_FILE} not found.")
         return
 
-    with open(INPUT_FILE, "r", encoding="utf-8") as file:
+    with open(SAMPLE_INCIDENTS_FILE, "r", encoding="utf-8") as file:
         incidents = json.load(file)
 
     reports = []
@@ -21,12 +17,12 @@ def main():
         print(f"Analyzing incident {index}/{len(incidents)}...")
         reports.append(analyze_incident(incident))
 
-    Path("reports").mkdir(exist_ok=True)
+    REPORTS_DIR.mkdir(exist_ok=True)
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as file:
+    with open(LOCAL_SOC_REPORT_FILE, "w", encoding="utf-8") as file:
         json.dump(reports, file, indent=2)
 
-    print(f"\nDone. Reports saved to {OUTPUT_FILE}")
+    print(f"\nDone. Reports saved to {LOCAL_SOC_REPORT_FILE}")
 
 
 if __name__ == "__main__":
