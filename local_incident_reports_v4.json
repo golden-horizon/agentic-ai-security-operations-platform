@@ -1,0 +1,87 @@
+[
+  {
+    "incident": {
+      "user": "admin",
+      "source_ip": "45.83.12.10",
+      "failed_attempts": 8,
+      "location": "unknown"
+    },
+    "mitre_search_query": "brute force",
+    "selected_mitre": {
+      "id": "T1110",
+      "name": "Brute Force",
+      "score": 220.0,
+      "description": "Adversaries may use brute force techniques to gain access to accounts when passwords are unknown or when password hashes are obtained.(Citation: TrendMicro Pawn Storm Dec 2020) Without knowledge of the password for an account or set of accounts, an adversary may systematically guess the password using a repetitive or iterative mechanism.(Citation: "
+    },
+    "local_model": "qwen2.5:3b",
+    "analysis": "INCIDENT SUMMARY:\nAn attacker has attempted to brute force login to a system using the IP address 45.83.12.10, with 8 failed attempts.\n\nRISK:\nThis incident indicates that there may be unauthorized access attempts or potential credential compromise for an account or set of accounts on the network. If the credentials are compromised, this could lead to further exploitation and security breaches.\n\nMITRE ATT&CK:\nT1110 - Brute Force\n\nRECOMMENDED ACTIONS:\n- Monitor login attempts from 45.83.12.10 for a longer period.\n- Disable or lock out accounts that show unusual activity (e.g., multiple failed login attempts).\n- Review security logs and check system configurations to ensure account management is secure.\n\nESCALATION:\nIf this pattern of login attempts continues, escalates to Level 2 SOC analyst for further investigation. If there are signs of credential compromise, public-facing app exploits, or session anomalies, escalate immediately to the incident response team."
+  },
+  {
+    "incident": {
+      "user": "guest",
+      "source_ip": "103.22.55.9",
+      "request": "/login?username=admin' OR '1'='1",
+      "failed_attempts": 0
+    },
+    "mitre_search_query": "exploit public-facing application",
+    "selected_mitre": {
+      "id": "T1190",
+      "name": "Exploit Public-Facing Application",
+      "score": 200.0,
+      "description": "Adversaries may attempt to exploit a weakness in an Internet-facing host or system to initially access a network. The weakness in the system can be a software bug, a temporary glitch, or a misconfiguration.\n\nExploited applications are often websites/web servers, but can also include databases (like SQL), standard services (like SMB or SSH), network"
+    },
+    "local_model": "qwen2.5:3b",
+    "analysis": "INCIDENT SUMMARY:\nAn attacker is attempting to bypass the login validation for a user named 'admin' by sending an SQL Injection-like request. The IP address 103.22.55.9 seems to be located outside of usual network traffic.\n\nRISK:\nThis activity indicates potential credential compromise or misconfiguration on the public-facing application, which could lead to unauthorized access if successful.\n\nMITRE ATT&CK:\nT1190 - Exploit Public-Facing Application\n\nRECOMMENDED ACTIONS:\n- Monitor for any further attempts to bypass authentication at this specific IP address.\n- Review security logs and server configurations for vulnerabilities or misconfigurations related to the public-facing application.\n- Consider blocking traffic from 103.22.55.9 if it is determined to be suspicious based on additional analysis.\n\nESCALATION:\nIf there are multiple failed attempts or subsequent successful logins, escalate this incident immediately and involve your incident response team. Further investigation should include checking for other similar patterns in the logs and conducting a thorough security assessment of the public-facing application."
+  },
+  {
+    "incident": {
+      "user": "guest",
+      "source_ip": "88.12.44.7",
+      "request": "/search?q=<script>alert(1)</script>",
+      "failed_attempts": 0
+    },
+    "mitre_search_query": "exploit public-facing application",
+    "selected_mitre": {
+      "id": "T1190",
+      "name": "Exploit Public-Facing Application",
+      "score": 200.0,
+      "description": "Adversaries may attempt to exploit a weakness in an Internet-facing host or system to initially access a network. The weakness in the system can be a software bug, a temporary glitch, or a misconfiguration.\n\nExploited applications are often websites/web servers, but can also include databases (like SQL), standard services (like SMB or SSH), network"
+    },
+    "local_model": "qwen2.5:3b",
+    "analysis": "INCIDENT SUMMARY:\nAn attacker attempted to use a vulnerable search feature on a website by sending an encoded script that could potentially execute malicious code. This request was made from the IP address 88.12.44.7, but there were no failed login attempts.\n\nMITRE ATT&CK:\nID: T1190\nName: Exploit Public-Facing Application\n\nRISK:\nThe attack suggests a potential exploit of a public-facing application, which could lead to unauthorized access or execution of arbitrary code on the system. Given that it's an initial attempt without any credential compromise, the risk is moderate but requires monitoring.\n\nMITRE ATT&CK ID and Name: T1190 - Exploit Public-Facing Application\n\nRECOMMENDED ACTIONS:\n- Monitor further attempts from the same IP address.\n- Review server logs for any unusual activity on public-facing applications.\n- If an application is found to be vulnerable, apply patches immediately and monitor its behavior.\n\nESCALATION:\nIf this attack continues or if it leads to a successful exploit (e.g., through credential compromise), escalate the alert to Level 2 SOC analysts."
+  },
+  {
+    "incident": {
+      "user": "api_user",
+      "source_ip": "91.77.10.5",
+      "request_count": 250,
+      "endpoint": "/api/login"
+    },
+    "mitre_search_query": "brute force",
+    "selected_mitre": {
+      "id": "T1110",
+      "name": "Brute Force",
+      "score": 220.0,
+      "description": "Adversaries may use brute force techniques to gain access to accounts when passwords are unknown or when password hashes are obtained.(Citation: TrendMicro Pawn Storm Dec 2020) Without knowledge of the password for an account or set of accounts, an adversary may systematically guess the password using a repetitive or iterative mechanism.(Citation: "
+    },
+    "local_model": "qwen2.5:3b",
+    "analysis": "**INCIDENT SUMMARY:**  \nThe security incident involves an unauthorized user attempting to access a protected API endpoint. The user \"api_user\" is trying to log in through the \"/api/login\" endpoint from the IP address 91.77.10.5, making 250 login attempts.\n\n**RISK:**  \nThis large number of failed login attempts on a public-facing API endpoint could indicate an attempt at credential stuffing or brute force attack. The attacker might be using compromised credentials to attempt unauthorized access.\n\n**MITRE ATT&CK:**  \nT1110 - Brute Force\n\n**RECOMMENDED ACTIONS:**  \n1. Monitor the \"/api/login\" endpoint for further login attempts.\n2. Review system logs for any unusual activity related to this IP address or user \"api_user\".\n3. Implement rate limiting on login attempts to prevent brute force attacks if not already in place.\n4. Consider blocking the source IP (91.77.10.5) temporarily if there are no legitimate reasons for such a high volume of failed login attempts.\n\n**ESCALATION:**  \nIf any further action is needed beyond what has been recommended, escalate to Level 2 SOC Analysts. This escalation could include:\n- Further investigation into the source IP address.\n- Review security policies and configurations.\n- Consider logging in as \"api_user\" or similar accounts for further reconnaissance.\n- Implement additional security measures such as two-factor authentication (2FA) if not already in place.\n\n**ACTION PLAN:**  \n1. Continue monitoring the \"/api/login\" endpoint.\n2. If no legitimate reasons are found for the high volume of login attempts, consider blocking the source IP temporarily.\n3. Document all findings and actions taken.\n4. Review security policies and configurations to ensure they align with best practices.\n\nThis plan ensures a systematic approach while maintaining flexibility to address any new developments in the incident."
+  },
+  {
+    "incident": {
+      "user": "john",
+      "source_ip": "22.44.66.88",
+      "event": "impossible travel detected",
+      "session_anomaly": true
+    },
+    "mitre_search_query": "valid accounts",
+    "selected_mitre": {
+      "id": "T1078",
+      "name": "Valid Accounts",
+      "score": 200.0,
+      "description": "Adversaries may obtain and abuse credentials of existing accounts as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion. Compromised credentials may be used to bypass access controls placed on various resources on systems within the network and may even be used for persistent access to remote systems and extern"
+    },
+    "local_model": "qwen2.5:3b",
+    "analysis": "INCIDENT SUMMARY:\nThe security incident involves a user named John with a source IP of 22.44.66.88 who is detected for \"impossible travel,\" indicating an anomaly in session traffic that suggests abnormal behavior.\n\nRISK:\nAn \"impossible travel\" detection could be indicative of credential misuse or an exploit targeting public-facing applications, as the event aligns with MITRE's T1078 technique which deals with valid accounts and possible credentials exploitation.\n\nMITRE ATT&CK:\nT1078 - Valid Accounts\n\nRECOMMENDED ACTIONS:\n1. Investigate session anomalies involving John's account for unusual activities.\n2. Run a credential check on John\u2019s user account and any public-facing applications he uses, to ensure they are not compromised.\n3. Monitor network traffic and logs to see if there are further signs of activity from the source IP address (22.44.66.88).\n4. Implement multi-factor authentication for all accounts that use credentials to mitigate risk.\n\nESCALATION:\nIf John's account is found to have been compromised, or if further investigation confirms a public-facing app exploit, escalate the incident immediately by informing IT security and management teams. Consider blocking the source IP address (22.44.66.88) until the issue can be resolved and take steps such as:\n- Locking down affected accounts.\n- Resetting passwords on potentially compromised accounts.\n- Conducting a thorough network review to identify any additional vulnerabilities.\n- Implementing security patches for exploited applications."
+  }
+]

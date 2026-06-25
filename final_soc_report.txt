@@ -1,0 +1,64 @@
+===== FINAL SOC REPORT =====
+
+Total Incidents: 5
+
+Report ID: MCP-001
+Attack Type: Brute Force
+Severity: High
+MITRE: T1110 - Brute Force
+Recommended Actions:
+- Block source IP
+- Reset password
+- Check successful logins
+- Enable MFA
+
+----------------------------------------
+
+Report ID: MCP-002
+Attack Type: SQL Injection
+Severity: Critical
+MITRE: T1190 - Exploit Public-Facing Application
+Recommended Actions:
+- Block source IP
+- Review web logs
+- Validate input
+- Use parameterized queries
+
+----------------------------------------
+
+Report ID: MCP-003
+Attack Type: XSS
+Severity: High
+MITRE: T1059 - Command and Scripting Interpreter
+Recommended Actions:
+- Sanitize input
+- Apply output encoding
+- Review affected page
+- Add CSP headers
+
+----------------------------------------
+
+Report ID: MCP-004
+Attack Type: API Abuse
+Severity: High
+MITRE: T1499 - Endpoint Denial of Service
+Recommended Actions:
+- Rate-limit source IP
+- Review API logs
+- Check API key usage
+- Block suspicious source
+
+----------------------------------------
+
+Report ID: MCP-005
+Attack Type: Session Hijacking
+Severity: Critical
+MITRE: T1550 - Use Alternate Authentication Material
+Recommended Actions:
+- Invalidate session
+- Force password reset
+- Enable MFA
+- Review login history
+
+----------------------------------------
+

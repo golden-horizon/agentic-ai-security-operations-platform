@@ -1,0 +1,77 @@
+[
+    {
+        "report_id": "SOC-001",
+        "user": "admin",
+        "source_ip": "45.83.12.10",
+        "attack_type": "Brute Force",
+        "severity": "High",
+        "mitre": "T1110 - Brute Force",
+        "reason": "Multiple failed login attempts detected.",
+        "recommended_actions": [
+            "Block source IP",
+            "Reset password",
+            "Check successful logins",
+            "Enable MFA"
+        ]
+    },
+    {
+        "report_id": "SOC-002",
+        "user": "guest",
+        "source_ip": "103.22.55.9",
+        "attack_type": "SQL Injection",
+        "severity": "Critical",
+        "mitre": "T1190 - Exploit Public-Facing Application",
+        "reason": "Suspicious SQL keywords detected in request.",
+        "recommended_actions": [
+            "Block source IP",
+            "Review web logs",
+            "Validate input",
+            "Use parameterized queries"
+        ]
+    },
+    {
+        "report_id": "SOC-003",
+        "user": "guest",
+        "source_ip": "88.12.44.7",
+        "attack_type": "XSS",
+        "severity": "High",
+        "mitre": "T1059 - Command and Scripting Interpreter",
+        "reason": "Possible script injection detected.",
+        "recommended_actions": [
+            "Sanitize input",
+            "Apply output encoding",
+            "Review affected page",
+            "Add CSP headers"
+        ]
+    },
+    {
+        "report_id": "SOC-004",
+        "user": "api_user",
+        "source_ip": "91.77.10.5",
+        "attack_type": "API Abuse",
+        "severity": "High",
+        "mitre": "T1499 - Endpoint Denial of Service",
+        "reason": "Unusually high number of API requests detected.",
+        "recommended_actions": [
+            "Rate-limit source IP",
+            "Review API logs",
+            "Check API key usage",
+            "Block suspicious source"
+        ]
+    },
+    {
+        "report_id": "SOC-005",
+        "user": "john",
+        "source_ip": "22.44.66.88",
+        "attack_type": "Session Hijacking",
+        "severity": "Critical",
+        "mitre": "T1550 - Use Alternate Authentication Material",
+        "reason": "Suspicious session activity detected.",
+        "recommended_actions": [
+            "Invalidate session",
+            "Force password reset",
+            "Enable MFA",
+            "Review login history"
+        ]
+    }
+]

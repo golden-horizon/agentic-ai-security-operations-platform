@@ -1,0 +1,142 @@
+[
+  {
+    "incident": {
+      "user": "admin",
+      "source_ip": "45.83.12.10",
+      "failed_attempts": 8,
+      "location": "unknown"
+    },
+    "mitre_search_query": "brute force",
+    "mitre_results": [
+      {
+        "id": "T1021.005",
+        "name": "VNC",
+        "description": "Adversaries may use [Valid Accounts](https://attack.mitre.org/techniques/T1078) to remotely control machines using Virtual Network Computing (VNC).  VNC is a platform-independent desktop sharing system that uses the RFB (\u201cremote framebuffer\u201d) protocol to enable users to remotely control another computer\u2019s display by relaying the screen, mouse, and keyboard inputs over the network.(Citation: The Remote Framebuffer Protocol)\n\nVNC differs from [Remote Desktop Protocol](https://attack.mitre.org/tech"
+      },
+      {
+        "id": "T1110.001",
+        "name": "Password Guessing",
+        "description": "Adversaries with no prior knowledge of legitimate credentials within the system or environment may guess passwords to attempt access to accounts. Without knowledge of the password for an account, an adversary may opt to systematically guess the password using a repetitive or iterative mechanism. An adversary may guess login credentials without prior knowledge of system or environment passwords during an operation by using a list of common passwords. Password guessing may or may not take into acc"
+      },
+      {
+        "id": "T1552.004",
+        "name": "Private Keys",
+        "description": "Adversaries may search for private key certificate files on compromised systems for insecurely stored credentials. Private cryptographic keys and certificates are used for authentication, encryption/decryption, and digital signatures.(Citation: Wikipedia Public Key Crypto) Common key and certificate file extensions include: .key, .pgp, .gpg, .ppk., .p12, .pem, .pfx, .cer, .p7b, .asc. \n\nAdversaries may also look in common key directories, such as <code>~/.ssh</code> for SSH keys on * nix-based sy"
+      }
+    ],
+    "local_model": "qwen2.5:3b",
+    "analysis": "INCIDENT SUMMARY:\nThe incident involves an unauthorized login attempt by a user named \"admin\" from the IP address 45.83.12.10, with 8 failed attempts.\n\nRISK:\nThere is a risk of unauthorized access to the system or account due to repeated failed login attempts, which could potentially lead to credentials being guessed or brute-forced if no security measures are in place.\n\nMITRE ATT&CK:\nT1110.001\n\nRECOMMENDED ACTIONS:\n- Implement multi-factor authentication (MFA) for all accounts.\n- Increase the account lockout policy to prevent excessive login attempts from a single IP address.\n- Monitor user activity and system logs for unusual patterns or suspicious logins.\n\nESCALATION:\nIf these recommended actions are not taken within 24 hours, escalate the incident to Level 2 SOC analysts for further investigation."
+  },
+  {
+    "incident": {
+      "user": "guest",
+      "source_ip": "103.22.55.9",
+      "request": "/login?username=admin' OR '1'='1",
+      "failed_attempts": 0
+    },
+    "mitre_search_query": "public-facing application",
+    "mitre_results": [
+      {
+        "id": "T1190",
+        "name": "Exploit Public-Facing Application",
+        "description": "Adversaries may attempt to exploit a weakness in an Internet-facing host or system to initially access a network. The weakness in the system can be a software bug, a temporary glitch, or a misconfiguration.\n\nExploited applications are often websites/web servers, but can also include databases (like SQL), standard services (like SMB or SSH), network device administration and management protocols (like SNMP and Smart Install), and any other system with Internet-accessible open sockets.(Citation: N"
+      },
+      {
+        "id": "T1597.001",
+        "name": "Threat Intel Vendors",
+        "description": "Adversaries may search private data from threat intelligence vendors for information that can be used during targeting. Threat intelligence vendors may offer paid feeds or portals that offer more data than what is publicly reported. Although sensitive details (such as customer names and other identifiers) may be redacted, this information may contain trends regarding breaches such as target industries, attribution claims, and successful TTPs/countermeasures.(Citation: D3Secutrity CTI Feeds)\n\nAdv"
+      },
+      {
+        "id": "T1595.002",
+        "name": "Vulnerability Scanning",
+        "description": "Adversaries may scan victims for vulnerabilities that can be used during targeting. Vulnerability scans typically check if the configuration of a target host/application (ex: software and version) potentially aligns with the target of a specific exploit the adversary may seek to use.\n\nThese scans may also include more broad attempts to [Gather Victim Host Information](https://attack.mitre.org/techniques/T1592) that can be used to identify more commonly known, exploitable vulnerabilities. Vulnera"
+      }
+    ],
+    "local_model": "qwen2.5:3b",
+    "analysis": "INCIDENT SUMMARY:\nA user with the username \"guest\" attempted to access the login page of an application by submitting a request that exploits a SQL injection vulnerability in the 'username=admin' parameter.\n\nRISK:\nThe attacker is attempting to bypass authentication, which could lead to unauthorized access and data theft if successful.\n\nMITRE ATT&CK:\nT1595.002 - Vulnerability Scanning\n\nRECOMMENDED ACTIONS:\n- Monitor for similar login attempts from different sources.\n- Investigate any recent vulnerability scans on the application servers.\n- Review firewall logs for new inbound traffic patterns targeting this host or port.\n- Consider implementing Application Firewall (WAF) rules to block SQL injection payloads.\n\nESCALATION:\nIf multiple failed login attempts are detected, escalate to Level 2 SOC analysts for further investigation."
+  },
+  {
+    "incident": {
+      "user": "guest",
+      "source_ip": "88.12.44.7",
+      "request": "/search?q=<script>alert(1)</script>",
+      "failed_attempts": 0
+    },
+    "mitre_search_query": "public-facing application",
+    "mitre_results": [
+      {
+        "id": "T1190",
+        "name": "Exploit Public-Facing Application",
+        "description": "Adversaries may attempt to exploit a weakness in an Internet-facing host or system to initially access a network. The weakness in the system can be a software bug, a temporary glitch, or a misconfiguration.\n\nExploited applications are often websites/web servers, but can also include databases (like SQL), standard services (like SMB or SSH), network device administration and management protocols (like SNMP and Smart Install), and any other system with Internet-accessible open sockets.(Citation: N"
+      },
+      {
+        "id": "T1597.001",
+        "name": "Threat Intel Vendors",
+        "description": "Adversaries may search private data from threat intelligence vendors for information that can be used during targeting. Threat intelligence vendors may offer paid feeds or portals that offer more data than what is publicly reported. Although sensitive details (such as customer names and other identifiers) may be redacted, this information may contain trends regarding breaches such as target industries, attribution claims, and successful TTPs/countermeasures.(Citation: D3Secutrity CTI Feeds)\n\nAdv"
+      },
+      {
+        "id": "T1595.002",
+        "name": "Vulnerability Scanning",
+        "description": "Adversaries may scan victims for vulnerabilities that can be used during targeting. Vulnerability scans typically check if the configuration of a target host/application (ex: software and version) potentially aligns with the target of a specific exploit the adversary may seek to use.\n\nThese scans may also include more broad attempts to [Gather Victim Host Information](https://attack.mitre.org/techniques/T1592) that can be used to identify more commonly known, exploitable vulnerabilities. Vulnera"
+      }
+    ],
+    "local_model": "qwen2.5:3b",
+    "analysis": "INCIDENT SUMMARY:\nA user named 'guest' attempted to access a search page by submitting an encoded script through the URL request '/search?q=<script>alert(1)</script>'. The system did not allow this due to the failed attempt.\n\nRISK:\nThe risk here is that the attacker may be attempting to exploit a public-facing application, possibly using a vulnerability in a web server or database. This could lead to unauthorized access if they are successful.\n\nMITRE ATT&CK:\nT1190: Exploit Public-Facing Application\n\nRECOMMENDED ACTIONS:\n- Monitor for any further attempts on the same IP address (88.12.44.7) accessing other public-facing applications.\n- Review logs for any unauthorized activity or access patterns that might indicate an attempt to exploit a vulnerability.\n- Inform the security team about this incident, as it could be part of an ongoing attack.\n\nESCALATION:\nIf additional attempts are detected or if there is evidence of successful exploitation, escalate the alert immediately. Consider blocking the IP address temporarily and investigate further to determine if any systems have been compromised."
+  },
+  {
+    "incident": {
+      "user": "api_user",
+      "source_ip": "91.77.10.5",
+      "request_count": 250,
+      "endpoint": "/api/login"
+    },
+    "mitre_search_query": "brute force",
+    "mitre_results": [
+      {
+        "id": "T1021.005",
+        "name": "VNC",
+        "description": "Adversaries may use [Valid Accounts](https://attack.mitre.org/techniques/T1078) to remotely control machines using Virtual Network Computing (VNC).  VNC is a platform-independent desktop sharing system that uses the RFB (\u201cremote framebuffer\u201d) protocol to enable users to remotely control another computer\u2019s display by relaying the screen, mouse, and keyboard inputs over the network.(Citation: The Remote Framebuffer Protocol)\n\nVNC differs from [Remote Desktop Protocol](https://attack.mitre.org/tech"
+      },
+      {
+        "id": "T1110.001",
+        "name": "Password Guessing",
+        "description": "Adversaries with no prior knowledge of legitimate credentials within the system or environment may guess passwords to attempt access to accounts. Without knowledge of the password for an account, an adversary may opt to systematically guess the password using a repetitive or iterative mechanism. An adversary may guess login credentials without prior knowledge of system or environment passwords during an operation by using a list of common passwords. Password guessing may or may not take into acc"
+      },
+      {
+        "id": "T1552.004",
+        "name": "Private Keys",
+        "description": "Adversaries may search for private key certificate files on compromised systems for insecurely stored credentials. Private cryptographic keys and certificates are used for authentication, encryption/decryption, and digital signatures.(Citation: Wikipedia Public Key Crypto) Common key and certificate file extensions include: .key, .pgp, .gpg, .ppk., .p12, .pem, .pfx, .cer, .p7b, .asc. \n\nAdversaries may also look in common key directories, such as <code>~/.ssh</code> for SSH keys on * nix-based sy"
+      }
+    ],
+    "local_model": "qwen2.5:3b",
+    "analysis": "INCIDENT SUMMARY:\nAn API user named \"api_user\" from IP address 91.77.10.5 made 250 requests to the \"/api/login\" endpoint, which is unusual and could indicate an attack.\n\nRISK:\nThe high number of login attempts might be part of a brute force or password guessing attempt targeting the API user account. If the API endpoint handles sensitive data, this could compromise the security of that information.\n\nMITRE ATT&CK:\nT1110.001\n\nRECOMMENDED ACTIONS:\n1. Monitor other suspicious activity from 91.77.10.5 for additional signs of a potential attack.\n2. Review the API user's account logs to check if any unauthorized login attempts have occurred recently.\n3. Temporarily suspend or lock out the \"api_user\" account to prevent further access until the issue is investigated.\n\nESCALATION:\nIf suspicious activity continues, escalate this incident to higher-level security personnel for further investigation and potential action on the affected accounts."
+  },
+  {
+    "incident": {
+      "user": "john",
+      "source_ip": "22.44.66.88",
+      "event": "impossible travel detected",
+      "session_anomaly": true
+    },
+    "mitre_search_query": "valid accounts",
+    "mitre_results": [
+      {
+        "id": "T1021.005",
+        "name": "VNC",
+        "description": "Adversaries may use [Valid Accounts](https://attack.mitre.org/techniques/T1078) to remotely control machines using Virtual Network Computing (VNC).  VNC is a platform-independent desktop sharing system that uses the RFB (\u201cremote framebuffer\u201d) protocol to enable users to remotely control another computer\u2019s display by relaying the screen, mouse, and keyboard inputs over the network.(Citation: The Remote Framebuffer Protocol)\n\nVNC differs from [Remote Desktop Protocol](https://attack.mitre.org/tech"
+      },
+      {
+        "id": "T1597.002",
+        "name": "Purchase Technical Data",
+        "description": "Adversaries may purchase technical information about victims that can be used during targeting. Information about victims may be available for purchase within reputable private sources and databases, such as paid subscriptions to feeds of scan databases or other data aggregation services. Adversaries may also purchase information from less-reputable sources such as dark web or cybercrime blackmarkets.\n\nAdversaries may purchase information about their already identified targets, or use purchased "
+      },
+      {
+        "id": "T1561.002",
+        "name": "Disk Structure Wipe",
+        "description": "Adversaries may corrupt or wipe the disk data structures on a hard drive necessary to boot a system; targeting specific critical systems or in large numbers in a network to interrupt availability to system and network resources. \n\nAdversaries may attempt to render the system unable to boot by overwriting critical data located in structures such as the master boot record (MBR) or partition table.(Citation: Symantec Shamoon 2012)(Citation: FireEye Shamoon Nov 2016)(Citation: Palo Alto Shamoon Nov "
+      }
+    ],
+    "local_model": "qwen2.5:3b",
+    "analysis": "INCIDENT SUMMARY:\nA user named John has been detected for an \"impossible travel\" event with a source IP of 22.44.66.88, and session anomaly is set to true.\n\nRISK:\nThe incident involves unusual network traffic from a specific IP address. This could be indicative of remote access attempts or data exfiltration via VNC (Virtual Network Computing).\n\nMITRE ATT&CK:\nT1021.005 - VNC\n\nRECOMMENDED ACTIONS:\n1. Investigate the user John's account to confirm if they are an authorized user with remote access capabilities.\n2. Review network logs for any unusual traffic patterns originating from 22.44.66.88.\n3. Conduct a WHOIS lookup on 22.44.66.88 to see if it has been used in other security incidents or is a known compromised IP address.\n4. If VNC access is confirmed, take immediate steps to secure remote access and monitor the user's activity for any anomalies.\n\nESCALATION:\nIf John cannot be verified as an authorized user or further investigation confirms unauthorized remote access attempts via VNC, escalate this incident to higher levels of the SOC for more in-depth analysis and potential containment measures."
+  }
+]

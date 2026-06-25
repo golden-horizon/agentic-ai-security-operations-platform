@@ -1,6 +1,17 @@
-.env
+# Python
 __pycache__/
 *.pyc
-incident_reports.json
-mcp_incident_reports.json
-final_soc_report.txt
+.venv/
+.env
+
+# Reports / generated files
+reports/*.json
+
+# Large MITRE database
+enterprise-attack.json
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Archive learning files
+archive/
