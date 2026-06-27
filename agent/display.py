@@ -6,7 +6,6 @@ from rich.table import Table
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.text import Text
 
-
 console = Console()
 
 
@@ -16,6 +15,7 @@ AGENT_STYLES = {
     "Threat Intel Agent": ("yellow", "🟨"),
     "Remediation Agent": ("green", "🟩"),
     "SOC Manager": ("red", "🟥"),
+    "IOC Agent": ("cyan", "🟦"),
 }
 
 
@@ -52,7 +52,9 @@ def error(message: str) -> None:
 
 def agent_panel(agent_name: str, content: str, status: str = "COMPLETED") -> None:
     color, emoji = AGENT_STYLES.get(agent_name, ("white", "⬜"))
-    title = f"{emoji} [bold {color}]{agent_name}[/bold {color}] [green]✓ {status}[/green]"
+    title = (
+        f"{emoji} [bold {color}]{agent_name}[/bold {color}] [green]✓ {status}[/green]"
+    )
 
     console.print(
         Panel(
@@ -117,17 +119,36 @@ def loading(message: str) -> None:
         progress.add_task(description=message, total=None)
 
 
-
-def zero_day_panel():
+def zero_day_panel() -> None:
     console.print(
         Panel(
-          "[bold red]⚠ POSSIBLE ZERO-DAY OR UNTRACKED EXPLOIT BEHAVIOR[/bold red]\n\n"
-          "Risk Score: 70\n"
-          "Priority: High\n"
-          "No CVE match found.\n"
-          "No CISA KEV match found.\n"
-          "Further investigation required.",
-    title="CRITICAL ALERT",
-    border_style="red",
-       )
-    )        
+            "[bold red]⚠ POSSIBLE ZERO-DAY OR UNTRACKED EXPLOIT BEHAVIOR[/bold red]\n\n"
+            "Risk Score: 70\n"
+            "Priority: High\n"
+            "No CVE match found.\n"
+            "No CISA KEV match found.\n"
+            "Further investigation required.",
+            title="CRITICAL ALERT",
+            border_style="red",
+        )
+    )
+
+
+def decision_panel(decision: str) -> None:
+    console.print(
+        Panel(
+            f"[bold yellow]{decision}[/bold yellow]",
+            title="SOC DECISION",
+            border_style="yellow",
+        )
+    )
+def ioc_panel(iocs: dict) -> None:
+    table = Table(title="Indicators of Compromise", border_style="cyan")
+
+    table.add_column("Indicator", style="bold cyan")
+    table.add_column("Value", style="white")
+
+    for key, value in iocs.items():
+        table.add_row(str(key), str(value))
+
+    console.print(table)
