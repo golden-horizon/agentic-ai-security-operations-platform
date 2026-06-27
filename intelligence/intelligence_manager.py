@@ -12,25 +12,21 @@ def calculate_risk_score(ip_result, cve_result, kev_result, incident):
     elif ip_result.get("reputation") == "suspicious":
         score += 20
 
-    # Attack Type
+    # Attack Pattern
     request = incident.get("request", "").lower()
 
     if "' or '1'='1" in request or "union select" in request:
         score += 35
-
     elif "<script>" in request:
         score += 25
-
     elif incident.get("failed_attempts", 0) >= 5:
         score += 20
-
     elif incident.get("request_count", 0) >= 200:
         score += 20
-
     elif incident.get("session_anomaly"):
         score += 30
 
-    # CVE
+    # CVE Severity
     if cve_result.get("severity") == "CRITICAL":
         score += 35
     elif cve_result.get("severity") == "HIGH":
@@ -56,6 +52,28 @@ def get_priority(risk_score):
     return "Low"
 
 
+def detect_possible_zero_day(cve_result, kev_result, risk_score, incident):
+    request = incident.get("request", "").lower()
+
+    known_attack_patterns = [
+        "' or '1'='1",
+        "union select",
+        "<script>",
+        "failed_attempts",
+    ]
+
+    known_pattern_detected = any(
+        pattern in request for pattern in known_attack_patterns
+    )
+
+    return (
+        not known_pattern_detected
+        and not cve_result.get("found")
+        and not kev_result.get("found")
+        and risk_score >= 70
+    )
+
+
 def build_intelligence_package(incident):
     source_ip = incident.get("source_ip", "unknown")
     cve_id = incident.get("cve_id")
@@ -76,9 +94,16 @@ def build_intelligence_package(incident):
         }
 
     risk_score = calculate_risk_score(
-    ip_result,
+        ip_result,
+        cve_result,
+        kev_result,
+        incident,
+    )
+
+    possible_zero_day = detect_possible_zero_day(
     cve_result,
     kev_result,
+    risk_score,
     incident,
 )
 
@@ -91,6 +116,13 @@ def build_intelligence_package(incident):
         },
         "risk_score": risk_score,
         "priority": get_priority(risk_score),
+        "possible_zero_day": possible_zero_day,
+        "zero_day_note": (
+            "Possible zero-day or untracked exploit behavior. "
+            "No CVE or CISA KEV match was found, but risk remains high."
+            if possible_zero_day
+            else "No zero-day indicator based on current evidence."
+        ),
     }
 
 

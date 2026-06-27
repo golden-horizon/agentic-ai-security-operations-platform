@@ -6,6 +6,7 @@ from rich.table import Table
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.text import Text
 
+
 console = Console()
 
 
@@ -114,3 +115,19 @@ def loading(message: str) -> None:
         transient=True,
     ) as progress:
         progress.add_task(description=message, total=None)
+
+
+
+def zero_day_panel():
+    console.print(
+        Panel(
+          "[bold red]⚠ POSSIBLE ZERO-DAY OR UNTRACKED EXPLOIT BEHAVIOR[/bold red]\n\n"
+          "Risk Score: 70\n"
+          "Priority: High\n"
+          "No CVE match found.\n"
+          "No CISA KEV match found.\n"
+          "Further investigation required.",
+    title="CRITICAL ALERT",
+    border_style="red",
+       )
+    )        

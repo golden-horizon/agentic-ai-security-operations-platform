@@ -41,6 +41,8 @@ Important rules:
 - Do not provide technology examples unless they appear in the incident data.
 - Do not use phrases such as "e.g. ASP.NET", "e.g. SQL Server", or similar examples.
 - Keep recommendations technology-neutral when the environment is unknown.
+- Do not use words like "compromised system" unless compromise is confirmed.
+- For attempted attacks, recommend blocking, monitoring, log review, and code review before disruptive actions.
 Return your answer in this structure:
 
 1. Immediate Containment Actions:
