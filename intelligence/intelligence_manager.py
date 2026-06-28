@@ -1,6 +1,6 @@
-from intelligence.cve_lookup import lookup_cve
 from intelligence.kev_checker import check_cve_in_kev
 from intelligence.ip_reputation import check_ip_reputation
+from intelligence.cve_lookup import check_cve
 
 
 def calculate_risk_score(ip_result, cve_result, kev_result, incident):
@@ -77,12 +77,23 @@ def detect_possible_zero_day(cve_result, kev_result, risk_score, incident):
 def build_intelligence_package(incident):
     source_ip = incident.get("source_ip", "unknown")
     cve_id = incident.get("cve_id")
+    product_name = incident.get("product")
 
     ip_result = check_ip_reputation(source_ip)
 
     if cve_id:
-        cve_result = lookup_cve(cve_id)
+        cve_result = check_cve(cve_id)
         kev_result = check_cve_in_kev(cve_id)
+    elif product_name:
+        cve_result = check_cve(product_name)
+
+        if cve_result.get("found"):
+            kev_result = check_cve_in_kev(cve_result.get("cve_id"))
+        else:
+            kev_result = {
+                "found": False,
+                "message": "No CVE linked to this incident",
+            }
     else:
         cve_result = {
             "found": False,
@@ -101,11 +112,11 @@ def build_intelligence_package(incident):
     )
 
     possible_zero_day = detect_possible_zero_day(
-    cve_result,
-    kev_result,
-    risk_score,
-    incident,
-)
+        cve_result,
+        kev_result,
+        risk_score,
+        incident,
+    )
 
     return {
         "incident": incident,
@@ -125,11 +136,11 @@ def build_intelligence_package(incident):
         ),
     }
 
-
 if __name__ == "__main__":
     test_incident = {
         "user": "guest",
         "source_ip": "103.22.55.9",
+        "product": "log4j",
         "request": "/login?username=admin' OR '1'='1",
     }
 
