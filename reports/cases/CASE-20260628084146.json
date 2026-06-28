@@ -104,5 +104,16 @@
       "time": "2026-06-28T08:42:32.584546+00:00",
       "event": "Executive summary generated"
     }
-  ]
+  ],
+  "event_count": 6,
+  "last_seen": "2026-06-28T10:48:18.206909+00:00",
+  "related_logs": [
+    "2026-06-28 12:15:20 Splunk correlation search privilege escalation source_ip=198.51.100.22 user=service_account",
+    "2026-06-28 12:15:20 Splunk correlation search privilege escalation source_ip=198.51.100.22 user=service_account"
+  ],
+  "threat_enrichment": {
+    "country": "Unknown",
+    "reputation": "Unknown",
+    "threat_score": 0
+  }
 }

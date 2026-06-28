@@ -5,6 +5,8 @@ from agent.log_analysis_agent import LogAnalysisAgent
 from agent.soc_manager_agent import SOCManagerAgent
 from collectors.collector_manager import CollectorManager
 from case_management.case_repository import CaseRepository
+from datetime import datetime, timezone
+from engine.correlation_engine import CorrelationEngine
 
 
 def main():
@@ -33,6 +35,28 @@ def main():
         print(f"\n{'=' * 60}")
         print(f"INCIDENT {index}")
         print(f"{'=' * 60}")
+
+        existing_case = CorrelationEngine.find_matching_case(
+            incident,
+            repository.list_cases(),
+        )
+
+        if existing_case:
+              existing_case["event_count"] = existing_case.get("event_count", 1) + 1
+              existing_case["last_seen"] = datetime.now(timezone.utc).isoformat()
+
+              existing_case.setdefault("related_logs", [])
+              existing_case["related_logs"].append(incident.get("raw_log", ""))
+
+              repository.save_case(existing_case)
+
+              print(f"Attack Type : {incident['attack_type']}")
+              print(f"Source IP   : {incident['source_ip']}")
+              print(f"User        : {incident['user']}")
+              print(f"\nMatched Existing Case : {existing_case['case_id']}")
+              print(f"Event Count           : {existing_case['event_count']}")
+
+        continue
 
         investigation = soc_manager.investigate(
            incident,

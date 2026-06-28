@@ -1,0 +1,113 @@
+{
+  "case_id": "CASE-20260628084048",
+  "created_at": "2026-06-28T08:40:48.650184+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "brute force",
+    "source_ip": "203.0.113.10",
+    "user": "admin",
+    "request": "unknown",
+    "raw_log": "2026-06-28 12:15:10 Splunk notable event failed login source_ip=203.0.113.10 user=admin"
+  },
+  "iocs": {
+    "source_ip": "203.0.113.10",
+    "user": "admin",
+    "request": "unknown",
+    "attack_pattern": "Unknown"
+  },
+  "mitre_analysis": null,
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "brute force",
+        "source_ip": "203.0.113.10",
+        "user": "admin",
+        "request": "unknown",
+        "raw_log": "2026-06-28 12:15:10 Splunk notable event failed login source_ip=203.0.113.10 user=admin"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": false,
+          "ip": "203.0.113.10",
+          "reputation": "unknown",
+          "confidence": 0,
+          "reason": "No reputation data found"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "203.0.113.10",
+      "ip_reputation": "unknown",
+      "ip_confidence": 0,
+      "ip_reason": "No reputation data found",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [],
+    "investigation_actions": [],
+    "remediation_actions": [],
+    "recovery_actions": [],
+    "prevention_actions": [],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. SOC Decision: Investigate Within 15 Minutes\n\n2. Executive Summary:\nThe incident involves a brute force attack attempt where an unauthorized user, 'admin', from the source IP address of 203.0.113.10 made an unsuccessful login request at 12:15 PM on June 28, 2026. No Known Exploited Vulnerabilities (KEV) or known zero-day attack indicators were found in the structured case data. The risk score is low with no specific IP reputation and no CVEs identified. The SOC has been advised to investigate this incident within 15 minutes.\n\n3. Confirmed Facts:\n- An attempt was made at a login by a user named 'admin' from an IP address of 203.0.113.10.\n- The attack involved a brute force method, indicated by the unsuccessful login request.\n- No Known Exploited Vulnerabilities (KEV) were found in the case data.\n- There was no indication of any zero-day attacks based on current evidence.\n\n4. Assumptions / Unknowns:\n- The attacker's motive and intent are unknown.\n- Further investigation into potential vulnerabilities or misconfigurations at 203.0.113.10 may be necessary to confirm if this is a one-off attempt or part of an ongoing threat.\n- Additional indicators such as logs from other systems, network traffic patterns, or user behavior might provide more insight into the attack.\n\n5. Business Impact:\nThe brute force login attempt poses a potential security risk but does not indicate any successful compromise. If there were indications of unauthorized access to protected data or critical systems, this would significantly impact business operations and trust with stakeholders.\n\n6. Immediate Next Steps:\n- Conduct a thorough investigation on 203.0.113.10 to check for misconfigurations or vulnerabilities.\n- Review system logs for similar attack patterns in the past or other suspicious activities around this time frame.\n- Enhance security controls at sensitive systems like those associated with user 'admin' and monitor closely until additional indicators of successful compromise are found.\n\n7. Confidence:\nThe identified facts suggest a brute force attack attempt, but without any evidence of a successful breach, the situation does not currently meet the criteria for \"attack is confirmed.\" The low risk score and lack of KEV or zero-day findings indicate that this appears to be a low severity event. However, given the method employed (a brute force login attempt), a more comprehensive investigation is warranted to ensure full understanding and mitigation strategies are implemented.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:40:48.650184+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:40:48.650184+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:40:48.650184+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:40:48.650184+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:40:48.650184+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:40:48.650184+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:41:46.674061+00:00",
+      "event": "Executive summary generated"
+    }
+  ],
+  "event_count": 2,
+  "last_seen": "2026-06-28T10:26:30.018883+00:00",
+  "related_logs": [
+    "2026-06-28 12:15:10 Splunk notable event failed login source_ip=203.0.113.10 user=admin"
+  ]
+}

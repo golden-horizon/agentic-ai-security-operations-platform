@@ -1,0 +1,108 @@
+{
+  "case_id": "CASE-20260628100759-f37249d4",
+  "created_at": "2026-06-28T10:07:59.543421+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "brute force",
+    "source_ip": "52.91.10.20",
+    "user": "root",
+    "request": "unknown",
+    "raw_log": "2026-06-28 12:05:10 AWS CloudTrail ConsoleLogin failed login source_ip=52.91.10.20 user=root"
+  },
+  "iocs": {
+    "source_ip": "52.91.10.20",
+    "user": "root",
+    "request": "unknown",
+    "attack_pattern": "Unknown"
+  },
+  "mitre_analysis": null,
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "brute force",
+        "source_ip": "52.91.10.20",
+        "user": "root",
+        "request": "unknown",
+        "raw_log": "2026-06-28 12:05:10 AWS CloudTrail ConsoleLogin failed login source_ip=52.91.10.20 user=root"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": false,
+          "ip": "52.91.10.20",
+          "reputation": "unknown",
+          "confidence": 0,
+          "reason": "No reputation data found"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "52.91.10.20",
+      "ip_reputation": "unknown",
+      "ip_confidence": 0,
+      "ip_reason": "No reputation data found",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [],
+    "investigation_actions": [],
+    "remediation_actions": [],
+    "recovery_actions": [],
+    "prevention_actions": [],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "Skipped in fast mode",
+  "timeline": [
+    {
+      "time": "2026-06-28T10:07:59.543421+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T10:07:59.543421+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T10:07:59.543421+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T10:07:59.543421+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T10:07:59.543421+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T10:07:59.543421+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T10:07:59.543421+00:00",
+      "event": "Executive summary skipped"
+    }
+  ]
+}

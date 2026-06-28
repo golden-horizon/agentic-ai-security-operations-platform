@@ -104,5 +104,16 @@
       "time": "2026-06-28T08:40:02.417247+00:00",
       "event": "Executive summary generated"
     }
-  ]
+  ],
+  "event_count": 6,
+  "last_seen": "2026-06-28T10:48:18.102188+00:00",
+  "related_logs": [
+    "2026-06-28 12:11:10 Azure AuditLog privilege escalation source_ip=51.144.22.8 user=unknown",
+    "2026-06-28 12:11:10 Azure AuditLog privilege escalation source_ip=51.144.22.8 user=unknown"
+  ],
+  "threat_enrichment": {
+    "country": "Unknown",
+    "reputation": "Unknown",
+    "threat_score": 0
+  }
 }

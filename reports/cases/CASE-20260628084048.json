@@ -104,5 +104,16 @@
       "time": "2026-06-28T08:41:46.674061+00:00",
       "event": "Executive summary generated"
     }
-  ]
+  ],
+  "event_count": 6,
+  "last_seen": "2026-06-28T10:48:18.169406+00:00",
+  "related_logs": [
+    "2026-06-28 12:15:10 Splunk notable event failed login source_ip=203.0.113.10 user=admin",
+    "2026-06-28 12:15:10 Splunk notable event failed login source_ip=203.0.113.10 user=admin"
+  ],
+  "threat_enrichment": {
+    "country": "Unknown",
+    "reputation": "Unknown",
+    "threat_score": 0
+  }
 }

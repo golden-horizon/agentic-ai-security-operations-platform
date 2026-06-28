@@ -104,5 +104,16 @@
       "time": "2026-06-28T07:38:09.305958+00:00",
       "event": "Executive summary generated"
     }
-  ]
+  ],
+  "event_count": 11,
+  "last_seen": "2026-06-28T10:48:17.888031+00:00",
+  "related_logs": [
+    "2026-06-28 12:05:10 AWS CloudTrail ConsoleLogin failed login source_ip=52.91.10.20 user=root",
+    "2026-06-28 12:05:10 AWS CloudTrail ConsoleLogin failed login source_ip=52.91.10.20 user=root"
+  ],
+  "threat_enrichment": {
+    "country": "Unknown",
+    "reputation": "Unknown",
+    "threat_score": 0
+  }
 }

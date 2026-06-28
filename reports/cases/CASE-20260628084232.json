@@ -104,5 +104,16 @@
       "time": "2026-06-28T08:43:13.770233+00:00",
       "event": "Executive summary generated"
     }
-  ]
+  ],
+  "event_count": 7,
+  "last_seen": "2026-06-28T10:48:18.223695+00:00",
+  "related_logs": [
+    "2026-06-28 12:15:30 Splunk notable event suspicious connection source_ip=192.0.2.44 user=unknown",
+    "2026-06-28 12:15:30 Splunk notable event suspicious connection source_ip=192.0.2.44 user=unknown"
+  ],
+  "threat_enrichment": {
+    "country": "Unknown",
+    "reputation": "Unknown",
+    "threat_score": 0
+  }
 }

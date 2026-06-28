@@ -104,5 +104,16 @@
       "time": "2026-06-28T08:03:26.552881+00:00",
       "event": "Executive summary generated"
     }
-  ]
+  ],
+  "event_count": 10,
+  "last_seen": "2026-06-28T10:48:17.917737+00:00",
+  "related_logs": [
+    "2026-06-28 12:05:20 AWS CloudTrail AssumeRole suspicious api abuse source_ip=18.222.44.10 user=unknown",
+    "2026-06-28 12:05:20 AWS CloudTrail AssumeRole suspicious api abuse source_ip=18.222.44.10 user=unknown"
+  ],
+  "threat_enrichment": {
+    "country": "United States",
+    "reputation": "Suspicious",
+    "threat_score": 70
+  }
 }

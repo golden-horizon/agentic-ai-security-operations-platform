@@ -118,5 +118,16 @@
       "time": "2026-06-28T07:02:55.522930+00:00",
       "event": "Executive summary generated"
     }
-  ]
+  ],
+  "event_count": 12,
+  "last_seen": "2026-06-28T10:48:17.846917+00:00",
+  "related_logs": [
+    "2026-06-28 12:01:30 GET /search?q=<script>alert(1)</script> source_ip=88.12.44.7 user=guest",
+    "2026-06-28 12:01:30 GET /search?q=<script>alert(1)</script> source_ip=88.12.44.7 user=guest"
+  ],
+  "threat_enrichment": {
+    "country": "Unknown",
+    "reputation": "Unknown",
+    "threat_score": 0
+  }
 }

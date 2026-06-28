@@ -104,5 +104,16 @@
       "time": "2026-06-28T08:23:40.127182+00:00",
       "event": "Executive summary generated"
     }
-  ]
+  ],
+  "event_count": 8,
+  "last_seen": "2026-06-28T10:48:18.011212+00:00",
+  "related_logs": [
+    "2026-06-28 12:08:10 AWS VPCFlow suspicious connection source_ip=185.23.44.1 user=unknown",
+    "2026-06-28 12:08:10 AWS VPCFlow suspicious connection source_ip=185.23.44.1 user=unknown"
+  ],
+  "threat_enrichment": {
+    "country": "Unknown",
+    "reputation": "Suspicious",
+    "threat_score": 60
+  }
 }

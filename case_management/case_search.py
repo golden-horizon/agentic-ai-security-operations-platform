@@ -51,6 +51,8 @@ Decision: {case.get("soc_decision")}
     table.add_row("Country", threat_enrichment.get("country", "unknown"))
     table.add_row("Local Reputation", threat_enrichment.get("reputation", "unknown"))
     table.add_row("Threat Score", str(threat_enrichment.get("threat_score", "unknown")))
+    table.add_row("Event Count", str(case.get("event_count", 1)))
+    table.add_row("Last Seen", case.get("last_seen", "not updated"))
 
     console.print(table)
 

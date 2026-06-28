@@ -104,5 +104,16 @@
       "time": "2026-06-28T09:55:04.887110+00:00",
       "event": "Executive summary skipped"
     }
-  ]
+  ],
+  "event_count": 6,
+  "last_seen": "2026-06-28T10:48:18.255682+00:00",
+  "related_logs": [
+    "2026-06-28 12:20:10 Linux sshd failed login source_ip=45.83.12.10 user=root",
+    "2026-06-28 12:20:10 Linux sshd failed login source_ip=45.83.12.10 user=root"
+  ],
+  "threat_enrichment": {
+    "country": "Russia",
+    "reputation": "Malicious",
+    "threat_score": 95
+  }
 }

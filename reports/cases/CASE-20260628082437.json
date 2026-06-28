@@ -104,5 +104,16 @@
       "time": "2026-06-28T08:25:25.858434+00:00",
       "event": "Executive summary generated"
     }
-  ]
+  ],
+  "event_count": 7,
+  "last_seen": "2026-06-28T10:48:18.071297+00:00",
+  "related_logs": [
+    "2026-06-28 12:10:20 Azure EntraID impossible travel source_ip=20.55.44.9 user=user@company.com",
+    "2026-06-28 12:10:20 Azure EntraID impossible travel source_ip=20.55.44.9 user=user@company.com"
+  ],
+  "threat_enrichment": {
+    "country": "Unknown",
+    "reputation": "Unknown",
+    "threat_score": 0
+  }
 }
