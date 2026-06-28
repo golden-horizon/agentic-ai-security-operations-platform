@@ -1,5 +1,8 @@
 from collectors.windows_collector import WindowsCollector
-
+from collectors.aws_collector import AWSCollector
+from collectors.azure_collector import AzureCollector
+from collectors.splunk_collector import SplunkCollector
+from collectors.linux_collector import LinuxCollector
 
 class CollectorManager:
     """
@@ -8,8 +11,12 @@ class CollectorManager:
 
     def __init__(self):
         self.collectors = [
-            WindowsCollector(),
-        ]
+           WindowsCollector(),
+           AWSCollector(),
+           AzureCollector(),
+           SplunkCollector(),
+           LinuxCollector(),
+        ]     
 
     def collect_logs(self) -> list[str]:
 

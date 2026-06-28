@@ -1,0 +1,122 @@
+{
+  "case_id": "CASE-20260628080107",
+  "created_at": "2026-06-28T08:01:07.389530+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "xss",
+    "source_ip": "88.12.44.7",
+    "user": "guest",
+    "request": "/search?q=<script>alert(1)</script>",
+    "raw_log": "2026-06-28 12:01:30 GET /search?q=<script>alert(1)</script> source_ip=88.12.44.7 user=guest"
+  },
+  "iocs": {
+    "source_ip": "88.12.44.7",
+    "user": "guest",
+    "request": "/search?q=<script>alert(1)</script>",
+    "attack_pattern": "Cross-Site Scripting (XSS)"
+  },
+  "mitre_analysis": {
+    "technique_id": "T1059",
+    "technique_name": "Command and Scripting Interpreter",
+    "tactic": "Execution",
+    "confidence": "Medium",
+    "explanation": "The request contains XSS-style script syntax targeting a web application. MITRE mapping was retrieved from the MCP-style MITRE tool."
+  },
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "xss",
+        "source_ip": "88.12.44.7",
+        "user": "guest",
+        "request": "/search?q=<script>alert(1)</script>",
+        "raw_log": "2026-06-28 12:01:30 GET /search?q=<script>alert(1)</script> source_ip=88.12.44.7 user=guest"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": true,
+          "ip": "88.12.44.7",
+          "reputation": "suspicious",
+          "confidence": 70,
+          "reason": "Associated with XSS scanning activity"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 45,
+      "priority": "Medium",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 45,
+      "priority": "Medium",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "88.12.44.7",
+      "ip_reputation": "suspicious",
+      "ip_confidence": 70,
+      "ip_reason": "Associated with XSS scanning activity",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [
+      "Block malicious requests",
+      "Review affected pages"
+    ],
+    "investigation_actions": [],
+    "remediation_actions": [
+      "Implement output encoding",
+      "Sanitize user input"
+    ],
+    "recovery_actions": [],
+    "prevention_actions": [
+      "Enable Content Security Policy"
+    ],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. SOC Decision:\n   The SOC decision is to investigate within 15 minutes.\n\n2. Executive Summary:\n   Based on the provided structured case data, there was a suspicious XSS attack attempt originating from the IP address 88.12.44.7 with a user agent of 'guest'. The request sent to '/search?q=<script>alert(1)</script>' contained script syntax that could potentially execute malicious JavaScript within a web application if executed by a vulnerable server-side component. The MITRE technique ID identified was T1059, corresponding to Command and Scripting Interpreter under the Execution tactic.\n\n   No CISA KEV match was found in the Known Exploited Vulnerabilities database. There were no confirmed successful compromises, but only patterns of suspicious activity that suggest an attempt at exploiting a Cross-Site Scripting vulnerability. The IP reputation of the source is marked as 'suspicious' with a confidence level of 70%.\n\n   The risk score for this event is Medium. Based on the current evidence, no known zero-day attack was identified.\n\n3. Confirmed Facts:\n   - An XSS attack attempt occurred.\n   - The attacker used the '/search?q=<script>alert(1)</script>' request pattern to inject malicious JavaScript into a web application through user input.\n   - The source IP address is 88.12.44.7 and was associated with a suspicious reputation profile with an 80% confidence level.\n\n4. Assumptions / Unknowns:\n   - Whether the server-side component of the target web application is vulnerable to this type of attack remains unknown.\n   - The presence of the MITRE technique ID does not confirm that a successful compromise occurred but suggests an attempted exploitation of XSS vulnerabilities.\n\n5. Business Impact:\n   An XSS attack attempt could result in data theft, phishing attempts, or other malicious actions if the server-side application is vulnerable to such attacks. Although no confirmed compromise was identified, this type of behavior can indicate potential security weaknesses and lead to further investigations into the web application's defense mechanisms.\n\n6. Immediate Next Steps:\n   - Investigate the affected pages within the target application that were accessed via the suspicious request.\n   - Implement output encoding and sanitize user input to prevent future attacks.\n   - Conduct a Content Security Policy review to ensure proper protection of web applications from XSS vulnerabilities.\n   - Block malicious requests originating from the source IP address 88.12.44.7.\n\n7. Confidence:\n   The confidence level is Medium, considering that no successful compromise was detected but only an attempted attack based on suspicious activity and request patterns.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:01:07.389530+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:01:07.389530+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:01:07.389530+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:01:07.389530+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:01:07.389530+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:01:07.389530+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:01:58.677276+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}

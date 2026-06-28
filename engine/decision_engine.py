@@ -25,9 +25,13 @@ class DecisionEngine:
             return "Escalate Immediately"
 
         if attack_type in [
-            "sql injection",
-            "brute force",
-            "xss",
+         "sql injection",
+         "brute force",
+         "xss",
+         "api abuse",
+         "network anomaly",
+         "impossible travel",
+         "privilege escalation",
         ]:
             return "Investigate Within 15 Minutes"
 

@@ -1,6 +1,7 @@
 import re
 
 from mcp_tools.log_analysis_tools import analyze_logs
+from mcp_tools.sigma_rule_engine import analyze_logs_with_sigma
 
 
 class LogAnalysisAgent:
@@ -9,8 +10,8 @@ class LogAnalysisAgent:
     Uses the MCP-style log analysis tool.
     """
 
-    def analyze(self, log_lines: list[str]) -> dict:
-        return analyze_logs(log_lines)
+    def analyze(self, logs):
+        return analyze_logs_with_sigma(logs)
 
     def findings_to_incidents(self, analysis_result: dict) -> list[dict]:
         incidents = []

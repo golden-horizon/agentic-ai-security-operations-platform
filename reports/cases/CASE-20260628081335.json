@@ -1,0 +1,122 @@
+{
+  "case_id": "CASE-20260628081335",
+  "created_at": "2026-06-28T08:13:35.859594+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "xss",
+    "source_ip": "88.12.44.7",
+    "user": "guest",
+    "request": "/search?q=<script>alert(1)</script>",
+    "raw_log": "2026-06-28 12:01:30 GET /search?q=<script>alert(1)</script> source_ip=88.12.44.7 user=guest"
+  },
+  "iocs": {
+    "source_ip": "88.12.44.7",
+    "user": "guest",
+    "request": "/search?q=<script>alert(1)</script>",
+    "attack_pattern": "Cross-Site Scripting (XSS)"
+  },
+  "mitre_analysis": {
+    "technique_id": "T1059",
+    "technique_name": "Command and Scripting Interpreter",
+    "tactic": "Execution",
+    "confidence": "Medium",
+    "explanation": "The request contains XSS-style script syntax targeting a web application. MITRE mapping was retrieved from the MCP-style MITRE tool."
+  },
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "xss",
+        "source_ip": "88.12.44.7",
+        "user": "guest",
+        "request": "/search?q=<script>alert(1)</script>",
+        "raw_log": "2026-06-28 12:01:30 GET /search?q=<script>alert(1)</script> source_ip=88.12.44.7 user=guest"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": true,
+          "ip": "88.12.44.7",
+          "reputation": "suspicious",
+          "confidence": 70,
+          "reason": "Associated with XSS scanning activity"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 45,
+      "priority": "Medium",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 45,
+      "priority": "Medium",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "88.12.44.7",
+      "ip_reputation": "suspicious",
+      "ip_confidence": 70,
+      "ip_reason": "Associated with XSS scanning activity",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [
+      "Block malicious requests",
+      "Review affected pages"
+    ],
+    "investigation_actions": [],
+    "remediation_actions": [
+      "Implement output encoding",
+      "Sanitize user input"
+    ],
+    "recovery_actions": [],
+    "prevention_actions": [
+      "Enable Content Security Policy"
+    ],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. SOC Decision: Investigate Within 15 Minutes\n\n2. Executive Summary:\nThis structured case summary provides a detailed overview of the security incident based on the provided data. The attack appears to be an attempt at Cross-Site Scripting (XSS). The request detected by the system contained script syntax targeting a web application, which aligns with the MITRE technique T1059 - Command and Scripting Interpreter. Although no Known Exploited Vulnerabilities (KEV) were found, the IP reputation score was marked as suspicious with a 70% confidence level.\n\n3. Confirmed Facts:\n- The attack type is Cross-Site Scripting (XSS).\n- The source IP address is 88.12.44.7.\n- The user attempting the request is named 'guest'.\n- The observed request pattern is \"/search?q=<script>alert(1)</script>\".\n\n4. Assumptions / Unknowns:\n- It was not possible to determine if a successful compromise occurred due to lack of evidence proving that any data or systems were affected beyond the initial observation.\n- The risk score provided by threat intelligence (risk_score: 45, priority: Medium) indicates moderate potential impact but does not confirm whether it leads to actual harm.\n\n5. Business Impact:\nThe business could be at a medium level of risk due to the detected XSS attempt, which could potentially compromise user data or cause minor operational disruptions if any security controls are bypassed.\n\n6. Immediate Next Steps:\n- Implement immediate actions: Block malicious requests and review affected pages.\n- Review existing security measures including Content Security Policy (CSP) and ensure that all input is properly sanitized to prevent further unauthorized scripts from executing.\n- Develop long-term solutions by implementing output encoding in response to the observed XSS attempts.\n\n7. Confidence:\nThe confidence level for this investigation is Medium, considering only the suspicious IP reputation score provided. While the attack pattern matches a known MITRE technique, no CISA KEV was identified or confirmed compromise of any systems occurred during this incident.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:13:35.859594+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:13:35.859594+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:13:35.859594+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:13:35.859594+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:13:35.859594+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:13:35.859594+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:14:21.207049+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}

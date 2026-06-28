@@ -1,0 +1,108 @@
+{
+  "case_id": "CASE-20260628082931",
+  "created_at": "2026-06-28T08:29:31.829453+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "api abuse",
+    "source_ip": "18.222.44.10",
+    "user": "unknown",
+    "request": "unknown",
+    "raw_log": "2026-06-28 12:05:20 AWS CloudTrail AssumeRole suspicious api abuse source_ip=18.222.44.10 user=unknown"
+  },
+  "iocs": {
+    "source_ip": "18.222.44.10",
+    "user": "unknown",
+    "request": "unknown",
+    "attack_pattern": "Unknown"
+  },
+  "mitre_analysis": null,
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "api abuse",
+        "source_ip": "18.222.44.10",
+        "user": "unknown",
+        "request": "unknown",
+        "raw_log": "2026-06-28 12:05:20 AWS CloudTrail AssumeRole suspicious api abuse source_ip=18.222.44.10 user=unknown"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": false,
+          "ip": "18.222.44.10",
+          "reputation": "unknown",
+          "confidence": 0,
+          "reason": "No reputation data found"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "18.222.44.10",
+      "ip_reputation": "unknown",
+      "ip_confidence": 0,
+      "ip_reason": "No reputation data found",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [],
+    "investigation_actions": [],
+    "remediation_actions": [],
+    "recovery_actions": [],
+    "prevention_actions": [],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. SOC Decision: Investigate Within 15 Minutes\n\n2. Executive Summary:\nThe case data indicates that an API abuse incident occurred on June 28, 2026 at 12:05 PM UTC, involving suspicious activity from the IP address 18.222.44.10 with no specified user associated. The request and details are unknown. Based on the available information, there is no indication of a successful compromise or confirmed attack. The attack type identified is API abuse. The risk score for this incident is set at Low with an Unknown attack pattern.\n\n3. Confirmed Facts:\n- An API abuse event occurred on June 28, 2026 at 12:05 PM UTC.\n- The source IP address was 18.222.44.10.\n- The user associated with this activity is unknown.\n- No specific request details are available in the raw log.\n\n4. Assumptions / Unknowns:\n- The identity of the user who initiated the suspicious API abuse remains unknown.\n- It is not clear what specific API endpoint or functionality was being abused.\n- There is no evidence that a successful compromise occurred as a result of this activity.\n- No known vulnerability (CVE) has been identified in the context of this event.\n\n5. Business Impact:\nWhile the incident involved an attempt to abuse an API, there are currently no confirmed indicators of a successful attack or compromise. If a compromised user were able to exploit the API for unauthorized access, the impact could be significant depending on how the application and its data are secured. The risk is mitigated by the lack of conclusive evidence of any actual misuse.\n\n6. Immediate Next Steps:\n- Conduct a more detailed investigation into the activity at 18.222.44.10.\n- Review API access logs for further details, including user IDs if possible to identify the attacker.\n- Follow up with internal teams and stakeholders to ensure they are aware of this incident but do not take immediate action based on current evidence.\n\n7. Confidence:\nThe investigation is ongoing and preliminary findings suggest that while there were suspicious API abuse attempts, no successful compromise has been confirmed at this time. The lack of known vulnerabilities (CVE) or CISA KEV further supports the conclusion that this was an attempted attack rather than a confirmed breach.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:29:31.829453+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:29:31.829453+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:29:31.829453+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:29:31.829453+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:29:31.829453+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:29:31.829453+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:30:46.697781+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}

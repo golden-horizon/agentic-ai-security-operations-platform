@@ -1,0 +1,108 @@
+{
+  "case_id": "CASE-20260628073719",
+  "created_at": "2026-06-28T07:37:19.803281+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "brute force",
+    "source_ip": "52.91.10.20",
+    "user": "root",
+    "request": "unknown",
+    "raw_log": "2026-06-28 12:05:10 AWS CloudTrail ConsoleLogin failed login source_ip=52.91.10.20 user=root"
+  },
+  "iocs": {
+    "source_ip": "52.91.10.20",
+    "user": "root",
+    "request": "unknown",
+    "attack_pattern": "Unknown"
+  },
+  "mitre_analysis": null,
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "brute force",
+        "source_ip": "52.91.10.20",
+        "user": "root",
+        "request": "unknown",
+        "raw_log": "2026-06-28 12:05:10 AWS CloudTrail ConsoleLogin failed login source_ip=52.91.10.20 user=root"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": false,
+          "ip": "52.91.10.20",
+          "reputation": "unknown",
+          "confidence": 0,
+          "reason": "No reputation data found"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "52.91.10.20",
+      "ip_reputation": "unknown",
+      "ip_confidence": 0,
+      "ip_reason": "No reputation data found",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [],
+    "investigation_actions": [],
+    "remediation_actions": [],
+    "recovery_actions": [],
+    "prevention_actions": [],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. SOC Decision:\n   The SOC decision is to investigate the incident within 15 minutes.\n\n2. Executive Summary:\n   The case involves a failed login attempt via CloudTrail with source IP address as 52.91.10.20 and user as root. The request type is unknown, leading to an investigation of this security incident based on current evidence. No Known Exploited Vulnerabilities (KEV) were found in the provided case data. Since no CISA KEV match was found, the risk score is at a low priority level with no specific IP reputation or threat intelligence indicating any known malicious activity.\n\n3. Confirmed Facts:\n   - The attack type is identified as a brute force attempt.\n   - The source IP address is 52.91.10.20.\n   - The user attempting the login is root.\n   - No request details are provided in the raw log entry.\n   - There was no observed successful compromise or indication of an attack that leads to any known malicious activity.\n\n4. Assumptions / Unknowns:\n   - The exact request type (user-agent, HTTP method, etc.) cannot be determined from the given information.\n   - There is insufficient evidence at this point to confirm a potential CISA KEV exploit.\n   - The risk score remains low based on current intelligence and no known vulnerabilities have been identified.\n\n5. Business Impact:\n   A failed login attempt could potentially lead to unauthorized access attempts, which may include further malicious activity such as data exfiltration or system manipulation if successful. However, since the evidence points to a single unsuccessful attempt, there is currently no confirmed impact on business operations.\n\n6. Immediate Next Steps:\n   - Conduct an in-depth investigation of the login logs and network traffic to determine any patterns that might suggest repeated attempts or other malicious activities.\n   - Monitor affected systems for any changes or anomalies.\n   - Review baseline security controls and adjust them as necessary if further attempts are detected.\n   - Follow up with Security Team owners to ensure immediate preventive actions are taken.\n\n7. Confidence:\n   The confidence level is moderate, considering the lack of confirmed successful compromise but presence of a failed login attempt suggesting an attempted brute force attack. Further investigation will be needed to establish any definitive link between this incident and future malicious activities or exploits.",
+  "timeline": [
+    {
+      "time": "2026-06-28T07:37:19.803281+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T07:37:19.803281+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T07:37:19.803281+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T07:37:19.803281+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T07:37:19.803281+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T07:37:19.803281+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T07:38:09.305958+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}

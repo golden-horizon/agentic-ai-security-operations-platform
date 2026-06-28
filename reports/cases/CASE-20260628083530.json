@@ -1,0 +1,130 @@
+{
+  "case_id": "CASE-20260628083530",
+  "created_at": "2026-06-28T08:35:30.361328+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "sql injection",
+    "source_ip": "103.22.55.9",
+    "user": "guest",
+    "request": "/login?username=admin' OR '1'='1",
+    "raw_log": "2026-06-28 12:07:10 AWS Lambda GET /login?username=admin' OR '1'='1 source_ip=103.22.55.9 user=guest"
+  },
+  "iocs": {
+    "source_ip": "103.22.55.9",
+    "user": "guest",
+    "request": "/login?username=admin' OR '1'='1",
+    "attack_pattern": "SQL Injection"
+  },
+  "mitre_analysis": {
+    "technique_id": "T1190",
+    "technique_name": "Exploit Public-Facing Application",
+    "tactic": "Initial Access",
+    "confidence": "High",
+    "explanation": "The request contains SQL injection syntax targeting a public-facing login endpoint. MITRE mapping was retrieved from the MCP-style MITRE tool."
+  },
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "sql injection",
+        "source_ip": "103.22.55.9",
+        "user": "guest",
+        "request": "/login?username=admin' OR '1'='1",
+        "raw_log": "2026-06-28 12:07:10 AWS Lambda GET /login?username=admin' OR '1'='1 source_ip=103.22.55.9 user=guest"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": true,
+          "ip": "103.22.55.9",
+          "reputation": "malicious",
+          "confidence": 95,
+          "reason": "Known web attack source in sample threat intel"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 70,
+      "priority": "High",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 70,
+      "priority": "High",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "103.22.55.9",
+      "ip_reputation": "malicious",
+      "ip_confidence": 95,
+      "ip_reason": "Known web attack source in sample threat intel",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [
+      "Block source IP",
+      "Review web application logs"
+    ],
+    "investigation_actions": [
+      "Review authentication logs",
+      "Check database logs",
+      "Verify no unauthorized access occurred"
+    ],
+    "remediation_actions": [
+      "Implement parameterized queries",
+      "Validate user input",
+      "Deploy WAF protections"
+    ],
+    "recovery_actions": [],
+    "prevention_actions": [
+      "Conduct secure coding review",
+      "Schedule web application penetration testing"
+    ],
+    "owner_teams": [
+      "Security Team",
+      "Application Team",
+      "DevOps Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. SOC Decision:\n   - Investigate Within 15 Minutes\n\n2. Executive Summary:\n   The case involves a suspicious SQL injection attack attempt targeting the login endpoint of a public-facing application. The incident was triggered by an unauthorized request pattern observed in the raw log data, which included '/login?username=admin' OR '1'='1'. This attack attempt is confirmed based on the provided threat intelligence and MITRE techniques. No Known Exploited Vulnerabilities (CISA KEV) were found to match this specific scenario. The source IP has a malicious reputation with a high confidence level, indicating a potential risk but no confirmed compromise at this stage.\n\n3. Confirmed Facts:\n   - Attack Type: SQL Injection\n   - Source IP: 103.22.55.9\n   - User: guest\n   - Request Pattern: \"/login?username=admin' OR '1'='1\"\n   - Incident Timestamp: 2026-06-28 12:07:10\n   - Raw Log Source IP: 103.22.55.9\n   - Threat Intelligence: Malicious reputation with high confidence\n\n4. Assumptions / Unknowns:\n   - No CISA KEV matches the observed attack pattern.\n   - The request does not confirm a successful compromise of any system.\n\n5. Business Impact:\n   - Potential unauthorized access to the application's login functionality.\n   - Risk of data exposure or theft if sensitive information is compromised through this route.\n\n6. Immediate Next Steps:\n   - Block the source IP address 103.22.55.9 using the network firewall or security group settings.\n   - Conduct a review of authentication and database logs to ensure no unauthorized access occurred during the event.\n   - Implement parameterized queries in the web application code to prevent future SQL injection attacks.\n   - Validate user input and deploy WAF protections to further secure the login endpoint.\n\n7. Confidence:\n   The observed attack pattern matches known indicators for SQL injection, supported by MITRE technique T1190. The threat intelligence also corroborates this suspicion with a malicious reputation score. However, without evidence of successful compromise or unauthorized access, the confidence level is moderate in confirming an active attack.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:35:30.361328+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:35:30.361328+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:35:30.361328+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:35:30.361328+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:35:30.361328+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:35:30.361328+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:36:51.660651+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}

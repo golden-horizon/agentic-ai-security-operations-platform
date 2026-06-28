@@ -2,17 +2,25 @@ SUSPICIOUS_PATTERNS = {
     "sql injection": [
         "' OR '1'='1",
         "union select",
-        "drop table",
     ],
-    "xss": [
-        "<script>",
-        "javascript:",
-        "onerror=",
-    ],
+
     "brute force": [
         "failed login",
-        "invalid password",
-        "authentication failed",
+    ],
+
+    "xss": [
+        "<script>",
+    ],
+
+    "api abuse": [
+        "api abuse",
+        "assumerole suspicious",
+        "excessive request_count",
+    ],
+
+    "network anomaly": [
+        "suspicious connection",
+        "vpcflow",
     ],
 }
 

@@ -1,0 +1,108 @@
+{
+  "case_id": "CASE-20260628083651",
+  "created_at": "2026-06-28T08:36:51.663181+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "network anomaly",
+    "source_ip": "185.23.44.1",
+    "user": "unknown",
+    "request": "unknown",
+    "raw_log": "2026-06-28 12:08:10 AWS VPCFlow suspicious connection source_ip=185.23.44.1 user=unknown"
+  },
+  "iocs": {
+    "source_ip": "185.23.44.1",
+    "user": "unknown",
+    "request": "unknown",
+    "attack_pattern": "Unknown"
+  },
+  "mitre_analysis": null,
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "network anomaly",
+        "source_ip": "185.23.44.1",
+        "user": "unknown",
+        "request": "unknown",
+        "raw_log": "2026-06-28 12:08:10 AWS VPCFlow suspicious connection source_ip=185.23.44.1 user=unknown"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": false,
+          "ip": "185.23.44.1",
+          "reputation": "unknown",
+          "confidence": 0,
+          "reason": "No reputation data found"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "185.23.44.1",
+      "ip_reputation": "unknown",
+      "ip_confidence": 0,
+      "ip_reason": "No reputation data found",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [],
+    "investigation_actions": [],
+    "remediation_actions": [],
+    "recovery_actions": [],
+    "prevention_actions": [],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. SOC Decision: Investigate Within 15 Minutes\n\n2. Executive Summary:\nThe case data indicates a network anomaly from the source IP address of 185.23.44.1, involving an unknown user and request pattern, with no known vulnerabilities (CVE_found is False) or CISA KEV matches found (kev_found is False). The risk score assigned by threat intelligence is Low, with no specific security recommendation provided. Based on the current evidence, this appears to be a potential attempt at unauthorized access rather than a confirmed compromise. Further investigation will be conducted as per the SOC decision.\n\n3. Confirmed Facts:\n- Source IP: 185.23.44.1\n- User: Unknown\n- Request: Unknown\n- Time: 2026-06-28 12:08:10 UTC\n\n4. Assumptions / Unknowns:\n- The identity of the user is unknown.\n- The specific request made by the user was not observed and remains unknown.\n- No known vulnerabilities (CVE_found) are linked to this incident.\n\n5. Business Impact:\nThe impact on business operations is currently low, as no confirmed compromise has been identified. However, any unauthorized access attempt could potentially lead to further investigation or data breaches if successful.\n\n6. Immediate Next Steps:\n- Conduct a detailed forensic analysis of the suspicious network flow event.\n- Engage with the Security Team for further investigation and remediation planning.\n- Monitor potential follow-up activity from this incident closely.\n\n7. Confidence:\nBased on the provided evidence, the current assessment is that this appears to be an attempted unauthorized access rather than a confirmed compromise. The low risk score assigned by threat intelligence supports this view, but additional verification will be necessary to confirm any actual malicious intent or successful compromise.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:36:51.663181+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:36:51.663181+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:36:51.663181+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:36:51.663181+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:36:51.663181+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:36:51.663181+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:37:33.448444+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}

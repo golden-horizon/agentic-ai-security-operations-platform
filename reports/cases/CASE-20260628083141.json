@@ -1,0 +1,130 @@
+{
+  "case_id": "CASE-20260628083141",
+  "created_at": "2026-06-28T08:31:41.148403+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "sql injection",
+    "source_ip": "103.22.55.9",
+    "user": "guest",
+    "request": "/login?username=admin' OR '1'='1",
+    "raw_log": "2026-06-28 12:07:10 AWS Lambda GET /login?username=admin' OR '1'='1 source_ip=103.22.55.9 user=guest"
+  },
+  "iocs": {
+    "source_ip": "103.22.55.9",
+    "user": "guest",
+    "request": "/login?username=admin' OR '1'='1",
+    "attack_pattern": "SQL Injection"
+  },
+  "mitre_analysis": {
+    "technique_id": "T1190",
+    "technique_name": "Exploit Public-Facing Application",
+    "tactic": "Initial Access",
+    "confidence": "High",
+    "explanation": "The request contains SQL injection syntax targeting a public-facing login endpoint. MITRE mapping was retrieved from the MCP-style MITRE tool."
+  },
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "sql injection",
+        "source_ip": "103.22.55.9",
+        "user": "guest",
+        "request": "/login?username=admin' OR '1'='1",
+        "raw_log": "2026-06-28 12:07:10 AWS Lambda GET /login?username=admin' OR '1'='1 source_ip=103.22.55.9 user=guest"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": true,
+          "ip": "103.22.55.9",
+          "reputation": "malicious",
+          "confidence": 95,
+          "reason": "Known web attack source in sample threat intel"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 70,
+      "priority": "High",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 70,
+      "priority": "High",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "103.22.55.9",
+      "ip_reputation": "malicious",
+      "ip_confidence": 95,
+      "ip_reason": "Known web attack source in sample threat intel",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [
+      "Block source IP",
+      "Review web application logs"
+    ],
+    "investigation_actions": [
+      "Review authentication logs",
+      "Check database logs",
+      "Verify no unauthorized access occurred"
+    ],
+    "remediation_actions": [
+      "Implement parameterized queries",
+      "Validate user input",
+      "Deploy WAF protections"
+    ],
+    "recovery_actions": [],
+    "prevention_actions": [
+      "Conduct secure coding review",
+      "Schedule web application penetration testing"
+    ],
+    "owner_teams": [
+      "Security Team",
+      "Application Team",
+      "DevOps Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. **SOC Decision:**\n   Investigate Within 15 Minutes\n\n2. **Executive Summary:**\n   The incident involves a SQL injection attack attempt detected on June 28, 2026, at 12:07 PM UTC. The attack was initiated by an attacker with the username \"guest\" using the IP address 103.22.55.9. The specific request \"/login?username=admin' OR '1'='1\" contains SQL injection syntax targeting a public-facing login endpoint, matching MITRE technique ID T1190 (Exploit Public-Facing Application) in the context of Initial Access.\n\n   **Confirmed Facts:**\n   - A user with username \"guest\" attempted to log in using SQL injection.\n   - The source IP address 103.22.55.9 is associated with the attack.\n   - No Known Exploited Vulnerabilities (CISA KEV) were found relevant to this incident.\n   - No known zero-day indicators have been identified based on current evidence.\n\n   **Assumptions / Unknowns:**\n   - The attacker's identity and motivations are not confirmed at this time.\n   - Whether unauthorized access occurred is still under investigation.\n   - The impact of the attack attempt, if any, remains unknown.\n\n3. **Business Impact:**\n   The business impact of the potential SQL injection attack attempt includes possible data exposure or modification in the database due to the nature of SQL injection attacks. However, since no successful compromise has been proven and only an attempted attack was observed, the immediate direct damage is minimal. Further investigation will be conducted to confirm if any unauthorized access occurred.\n\n4. **Immediate Next Steps:**\n   - Block the source IP address 103.22.55.9.\n   - Review web application logs to identify additional patterns and signatures of attacks.\n   - Investigate authentication logs for signs of other unsuccessful attack attempts from this or similar user accounts.\n   - Check database logs for any unauthorized access or suspicious activities.\n   - Implement parameterized queries, validate user input, and deploy Web Application Firewall (WAF) protections on the affected application.\n\n5. **Confidence:**\n   The confidence in the confirmed facts is high due to the specific attack pattern matching known tactics such as SQL injection using public-facing login endpoints. However, there are uncertainties regarding whether unauthorized access occurred or if additional attempts were made by the attacker.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:31:41.148403+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:31:41.148403+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:31:41.148403+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:31:41.148403+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:31:41.148403+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:31:41.148403+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:32:32.311698+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "case_id": "CASE-20260628081841",
+  "created_at": "2026-06-28T08:18:41.600757+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "brute force",
+    "source_ip": "45.83.12.10",
+    "user": "admin",
+    "request": "/login failed login",
+    "raw_log": "2026-06-28 12:01:20 POST /login failed login source_ip=45.83.12.10 user=admin"
+  },
+  "iocs": {
+    "source_ip": "45.83.12.10",
+    "user": "admin",
+    "request": "/login failed login",
+    "attack_pattern": "Unknown"
+  },
+  "mitre_analysis": null,
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "brute force",
+        "source_ip": "45.83.12.10",
+        "user": "admin",
+        "request": "/login failed login",
+        "raw_log": "2026-06-28 12:01:20 POST /login failed login source_ip=45.83.12.10 user=admin"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": true,
+          "ip": "45.83.12.10",
+          "reputation": "malicious",
+          "confidence": 90,
+          "reason": "Repeated brute force activity observed"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 35,
+      "priority": "Medium",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 35,
+      "priority": "Medium",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "45.83.12.10",
+      "ip_reputation": "malicious",
+      "ip_confidence": 90,
+      "ip_reason": "Repeated brute force activity observed",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [],
+    "investigation_actions": [],
+    "remediation_actions": [],
+    "recovery_actions": [],
+    "prevention_actions": [],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. **SOC Decision**:\n   - Investigate Within 15 Minutes\n\n2. **Executive Summary**:\n   - Based on the provided structured case data, the SOC decision to investigate within 15 minutes is appropriate due to a potential brute force attack attempt targeting the '/login' endpoint with credentials 'admin'. The attacker's source IP address was observed as '45.83.12.10', and the request made was a failed login attempt.\n   - No Critical Software Assets (CISA KEV) match was found in the Known Exploited Vulnerabilities data.\n\n3. **Confirmed Facts**:\n   - The attack type is identified as brute force.\n   - The source IP address of the attacker's machine is '45.83.12.10'.\n   - The user attempting to access the system is named 'admin'.\n   - The request made was a failed login attempt to the '/login' endpoint.\n\n4. **Assumptions / Unknowns**:\n   - The MITRE ATT&CK framework details for this attack pattern are not provided.\n   - Whether this incident involves any specific Critical Software Assets (CISA KEV) cannot be determined due to lack of evidence.\n   - No Known Exploited Vulnerabilities (CVE) match was found, nor is a known zero-day identified.\n\n5. **Business Impact**:\n   - A brute force attack targeting the login credentials can lead to unauthorized access if successful. This could result in data theft or alteration, user account hijacking, and other security breaches.\n   \n6. **Immediate Next Steps**:\n   - Conduct an immediate review of network logs for additional requests from '45.83.12.10'.\n   - Monitor the affected systems for any further suspicious activity.\n   - Notify stakeholders about potential unauthorized access attempts to sensitive areas.\n\n7. **Confidence**:\n   - The observed incident aligns with a brute force attack attempt, but definitive confirmation of malicious intent and successful compromise is not yet available.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:18:41.600757+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:18:41.600757+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:18:41.600757+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:18:41.600757+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:18:41.600757+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:18:41.600757+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:19:24.586471+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}

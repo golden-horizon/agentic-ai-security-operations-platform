@@ -1,0 +1,108 @@
+{
+  "case_id": "CASE-20260628082710",
+  "created_at": "2026-06-28T08:27:10.321055+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "brute force",
+    "source_ip": "45.83.12.10",
+    "user": "admin",
+    "request": "/login failed login",
+    "raw_log": "2026-06-28 12:01:20 POST /login failed login source_ip=45.83.12.10 user=admin"
+  },
+  "iocs": {
+    "source_ip": "45.83.12.10",
+    "user": "admin",
+    "request": "/login failed login",
+    "attack_pattern": "Unknown"
+  },
+  "mitre_analysis": null,
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "brute force",
+        "source_ip": "45.83.12.10",
+        "user": "admin",
+        "request": "/login failed login",
+        "raw_log": "2026-06-28 12:01:20 POST /login failed login source_ip=45.83.12.10 user=admin"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": true,
+          "ip": "45.83.12.10",
+          "reputation": "malicious",
+          "confidence": 90,
+          "reason": "Repeated brute force activity observed"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 35,
+      "priority": "Medium",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 35,
+      "priority": "Medium",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "45.83.12.10",
+      "ip_reputation": "malicious",
+      "ip_confidence": 90,
+      "ip_reason": "Repeated brute force activity observed",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [],
+    "investigation_actions": [],
+    "remediation_actions": [],
+    "recovery_actions": [],
+    "prevention_actions": [],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. SOC Decision: Investigate Within 15 Minutes\n\n2. Executive Summary:\nThe incident involves an attempted brute force attack on a user account with the username 'admin' and login attempt to '/login failed login'. The attacker used the source IP address of '45.83.12.10'. The request pattern is suspicious but does not confirm any successful compromise, as no CISA KEV match was found. Based on the available data, there are no known exploited vulnerabilities (CVEs) or zero-day attacks identified. The risk score for this incident is Medium with a malicious IP reputation confidence of 90%. No immediate security measures need to be taken based on current evidence.\n\n3. Confirmed Facts:\n- The attack type was identified as brute force.\n- The attacker used the source IP address '45.83.12.10'.\n- The user attempted to login with username 'admin' to '/login failed login'.\n- No CISA KEV match was found, indicating no known exploited vulnerabilities or zero-day attacks.\n\n4. Assumptions / Unknowns:\n- The risk score of 35 suggests a medium level of concern but does not provide definitive information on the severity.\n- The confidence in the IP reputation is at 90%, which could be influenced by potential inaccuracies or delays in reputation data updates.\n- The attack pattern is identified as 'Unknown', suggesting that additional investigation might be needed to confirm whether this constitutes a genuine threat.\n\n5. Business Impact:\nGiven the nature of the incident, which involves an attempted brute force login attempt without evidence of successful compromise, the immediate impact on business operations should not be significant. However, it raises concerns about potential security vulnerabilities in user authentication mechanisms and may necessitate further investigation to ensure there are no unnoticed weaknesses that could lead to more serious incidents.\n\n6. Immediate Next Steps:\n- Continue monitoring for any subsequent attempts or suspicious activities from the source IP '45.83.12.10'.\n- Review system logs for similar patterns of behavior.\n- Ensure all users and systems, particularly those related to authentication processes, are up-to-date with security patches and best practices.\n- Document this incident as part of regular security reports.\n\n7. Confidence:\nBased on the available information provided in the structured case data, the confidence level is Medium. This assessment considers both the risk score from threat intelligence and the current lack of evidence supporting a more critical classification such as high or urgent action required.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:27:10.321055+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:27:10.321055+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:27:10.321055+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:27:10.321055+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:27:10.321055+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:27:10.321055+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:28:00.294579+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}

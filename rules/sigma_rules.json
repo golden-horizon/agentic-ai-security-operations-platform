@@ -1,0 +1,51 @@
+[
+  {
+    "title": "SQL Injection Attempt",
+    "attack_type": "sql injection",
+    "mitre_id": "T1190",
+    "patterns": ["' OR '1'='1", "union select", "drop table"],
+    "severity": "high"
+  },
+  {
+    "title": "Brute Force Login Attempt",
+    "attack_type": "brute force",
+    "mitre_id": "T1110",
+    "patterns": ["failed login", "invalid password", "authentication failed"],
+    "severity": "medium"
+  },
+  {
+    "title": "Cross Site Scripting Attempt",
+    "attack_type": "xss",
+    "mitre_id": "T1059",
+    "patterns": ["<script>", "javascript:", "onerror="],
+    "severity": "medium"
+  },
+  {
+    "title": "AWS API Abuse",
+    "attack_type": "api abuse",
+    "mitre_id": "T1190",
+    "patterns": ["api abuse", "assumerole suspicious", "excessive request_count"],
+    "severity": "high"
+  },
+  {
+    "title": "Network Anomaly",
+    "attack_type": "network anomaly",
+    "mitre_id": "Unknown",
+    "patterns": ["suspicious connection", "vpcflow"],
+    "severity": "medium"
+  },
+  {
+  "title": "Impossible Travel Detected",
+  "attack_type": "impossible travel",
+  "mitre_id": "T1078",
+  "patterns": ["impossible travel"],
+  "severity": "high"
+},
+{
+  "title": "Privilege Escalation Activity",
+  "attack_type": "privilege escalation",
+  "mitre_id": "T1068",
+  "patterns": ["privilege escalation"],
+  "severity": "high"
+}
+]

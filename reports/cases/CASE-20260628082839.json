@@ -1,0 +1,108 @@
+{
+  "case_id": "CASE-20260628082839",
+  "created_at": "2026-06-28T08:28:39.359843+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "brute force",
+    "source_ip": "52.91.10.20",
+    "user": "root",
+    "request": "unknown",
+    "raw_log": "2026-06-28 12:05:10 AWS CloudTrail ConsoleLogin failed login source_ip=52.91.10.20 user=root"
+  },
+  "iocs": {
+    "source_ip": "52.91.10.20",
+    "user": "root",
+    "request": "unknown",
+    "attack_pattern": "Unknown"
+  },
+  "mitre_analysis": null,
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "brute force",
+        "source_ip": "52.91.10.20",
+        "user": "root",
+        "request": "unknown",
+        "raw_log": "2026-06-28 12:05:10 AWS CloudTrail ConsoleLogin failed login source_ip=52.91.10.20 user=root"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": false,
+          "ip": "52.91.10.20",
+          "reputation": "unknown",
+          "confidence": 0,
+          "reason": "No reputation data found"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "52.91.10.20",
+      "ip_reputation": "unknown",
+      "ip_confidence": 0,
+      "ip_reason": "No reputation data found",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [],
+    "investigation_actions": [],
+    "remediation_actions": [],
+    "recovery_actions": [],
+    "prevention_actions": [],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. **SOC Decision:**\n   - Investigate Within 15 Minutes\n\n2. **Executive Summary:**\n   The incident data indicates a failed login attempt via the CloudTrail Console where an unauthorized user (root) attempted to log in from IP address 52.91.10.20. The request type was unknown, and no Known Exploited Vulnerabilities (KEV) were identified based on current evidence. No CISA KEV match was found. \n\n   Based on the provided data, it is clear that an unauthorized login attempt occurred but no successful compromise has been proven yet.\n\n3. **Confirmed Facts:**\n   - An unauthorized user attempted to log in using the root account.\n   - The source IP address for this activity was 52.91.10.20.\n   - The request type (login) is unknown based on available logs and data.\n   - No Known Exploited Vulnerabilities (KEV) were found, and no CVEs were mentioned.\n\n4. **Assumptions / Unknowns:**\n   - Whether this was a targeted attack or part of a broader pattern remains uncertain without further investigation.\n   - The specific reason for the failed login attempt could be unknown; it may have been related to brute force attempts, social engineering, or other factors not captured in the provided logs.\n\n5. **Business Impact:**\n   An unauthorized access attempt using root credentials poses a significant risk due to potential misuse of system privileges. If successful, this could lead to data breaches, loss of confidentiality and integrity, and potentially financial damage.\n\n6. **Immediate Next Steps:**\n   - Conduct a more detailed investigation into the login activity.\n   - Review CloudTrail logs for any patterns or anomalies that might indicate a broader attack scenario.\n   - Update security policies regarding root account usage to prevent unauthorized access.\n   - Monitor for further unusual activities and take appropriate actions as needed.\n\n7. **Confidence:**\n   The provided information indicates an attempted brute force login attempt from an unauthorized IP address, but without evidence of successful compromise, the level of confidence remains low. Continued investigation is necessary to confirm whether there was a genuine threat or if this was merely a failed authentication event.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:28:39.359843+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:28:39.359843+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:28:39.359843+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:28:39.360969+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:28:39.360969+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:28:39.360969+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:29:31.825967+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "case_id": "CASE-20260628083913",
+  "created_at": "2026-06-28T08:39:13.787122+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "privilege escalation",
+    "source_ip": "51.144.22.8",
+    "user": "unknown",
+    "request": "unknown",
+    "raw_log": "2026-06-28 12:11:10 Azure AuditLog privilege escalation source_ip=51.144.22.8 user=unknown"
+  },
+  "iocs": {
+    "source_ip": "51.144.22.8",
+    "user": "unknown",
+    "request": "unknown",
+    "attack_pattern": "Unknown"
+  },
+  "mitre_analysis": null,
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "privilege escalation",
+        "source_ip": "51.144.22.8",
+        "user": "unknown",
+        "request": "unknown",
+        "raw_log": "2026-06-28 12:11:10 Azure AuditLog privilege escalation source_ip=51.144.22.8 user=unknown"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": false,
+          "ip": "51.144.22.8",
+          "reputation": "unknown",
+          "confidence": 0,
+          "reason": "No reputation data found"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 0,
+      "priority": "Low",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "51.144.22.8",
+      "ip_reputation": "unknown",
+      "ip_confidence": 0,
+      "ip_reason": "No reputation data found",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [],
+    "investigation_actions": [],
+    "remediation_actions": [],
+    "recovery_actions": [],
+    "prevention_actions": [],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. SOC Decision: Investigate Within 15 Minutes\n\n2. Executive Summary:\nThe incident involves a privilege escalation attempt detected on June 28, 2026, at 12:11 PM UTC by the Azure Audit Log system. The attack originated from an IP address of 51.144.22.8 and was made by an unknown user without any specific known malicious requests or patterns noted in the raw log data. No Known Exploited Vulnerabilities (CISA KEV) were identified, and there is no indication of a zero-day attack based on current evidence. The Risk Score for this incident is 0 with a Low priority level.\n\n3. Confirmed Facts:\n- An attempted privilege escalation was observed.\n- The attack came from the IP address 51.144.22.8.\n- The attacker used an unknown user account.\n- No specific malicious requests or patterns were detected in the raw log data.\n- No Known Exploited Vulnerabilities (CISA KEV) match was found.\n\n4. Assumptions / Unknowns:\n- The nature of the attack is solely based on a privilege escalation attempt, with no confirmed successful compromise.\n- There are no suspicious activities observed that could indicate successful exploitation or unauthorized access.\n- The user account used by the attacker remains unknown and cannot be verified as malicious without additional investigation.\n\n5. Business Impact:\nThe incident does not currently appear to have any significant business impact, given that it only involves an attempted privilege escalation. However, this type of activity can potentially lead to further security breaches if successful.\n\n6. Immediate Next Steps:\n- Conduct a deeper analysis of the IP address 51.144.22.8 to verify its legitimacy.\n- Review historical logs for any potential patterns or signs of other attacks from similar sources.\n- Inform relevant stakeholders about this incident and discuss follow-up actions as appropriate.\n\n7. Confidence:\nThe confidence level regarding the nature of this attack is moderate based on the provided information. While it appears to be a simple privilege escalation attempt, without further investigation into the user account used by the attacker and its history, there remains room for uncertainty. However, the lack of specific malicious requests or known vulnerabilities significantly reduces the risk of an advanced cyber threat being behind this incident.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:39:13.787122+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:39:13.787122+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:39:13.787122+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:39:13.787122+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:39:13.787122+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:39:13.787122+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:40:02.417247+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}

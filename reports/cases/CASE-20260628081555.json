@@ -1,0 +1,108 @@
+{
+  "case_id": "CASE-20260628081555",
+  "created_at": "2026-06-28T08:15:55.610217+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "brute force",
+    "source_ip": "45.83.12.10",
+    "user": "admin",
+    "request": "unknown",
+    "raw_log": "2026-06-28 12:06:10 AWS CloudWatch application failed login source_ip=45.83.12.10 user=admin"
+  },
+  "iocs": {
+    "source_ip": "45.83.12.10",
+    "user": "admin",
+    "request": "unknown",
+    "attack_pattern": "Unknown"
+  },
+  "mitre_analysis": null,
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "brute force",
+        "source_ip": "45.83.12.10",
+        "user": "admin",
+        "request": "unknown",
+        "raw_log": "2026-06-28 12:06:10 AWS CloudWatch application failed login source_ip=45.83.12.10 user=admin"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": true,
+          "ip": "45.83.12.10",
+          "reputation": "malicious",
+          "confidence": 90,
+          "reason": "Repeated brute force activity observed"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 35,
+      "priority": "Medium",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 35,
+      "priority": "Medium",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "45.83.12.10",
+      "ip_reputation": "malicious",
+      "ip_confidence": 90,
+      "ip_reason": "Repeated brute force activity observed",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [],
+    "investigation_actions": [],
+    "remediation_actions": [],
+    "recovery_actions": [],
+    "prevention_actions": [],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. SOC Decision:\nThe SOC has decided to investigate the incident within 15 minutes.\n\n2. Executive Summary:\n- The incident involves a brute force attack attempt using an IP address (45.83.12.10) and user account (admin). No known CVE or CISA KEV vulnerabilities were identified, nor any zero-day indicators based on current evidence.\n- The risk score is 35 with a medium priority level, indicating the incident has some impact but is not critical at this moment. The IP address is marked as malicious.\n- The source IP and user details are known from the raw log. No specific attack pattern was identified, so it's treated as an attempted attack based on the request type.\n\n3. Confirmed Facts:\n- A brute force attack attempt occurred using the IP address 45.83.12.10 with a user account admin.\n- The attack involved failed login attempts, as evidenced by the AWS CloudWatch log entry.\n- No known CVE or CISA KEV vulnerabilities were found in the provided information.\n- There are no indications of a zero-day exploit.\n\n4. Assumptions / Unknowns:\n- The request pattern observed (failed login) indicates an attempted attack rather than a successful compromise since there is no indication of access being gained by the attacker.\n- The source IP's reputation as malicious suggests it may have been used in other similar incidents, but this does not confirm whether it was involved in this specific attempt.\n\n5. Business Impact:\nThe incident involves potential unauthorized attempts to gain unauthorized access through a failed login process using an account admin on IP address 45.83.12.10. While the impact is moderate due to the medium risk score, it represents a security vulnerability that needs attention and remediation.\n\n6. Immediate Next Steps:\n- The Security Team should review logs for any other attempts from the same source IP or user account.\n- Conduct further investigation on the source IP address and its history of malicious activity.\n- Implement additional logging mechanisms to monitor brute force attacks more closely in the future.\n- Notify affected systems owners if this attack pattern continues.\n\n7. Confidence:\nThe confidence level is moderate, given that no successful compromise was observed but a confirmed attempt at unauthorized access using a known vulnerable account and IP address has been identified. The medium risk score from the threat intelligence also supports this assessment.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:15:55.610217+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:15:55.610217+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:15:55.610217+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:15:55.610217+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:15:55.610217+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:15:55.610217+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:16:47.920228+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}

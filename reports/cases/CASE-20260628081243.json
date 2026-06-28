@@ -1,0 +1,108 @@
+{
+  "case_id": "CASE-20260628081243",
+  "created_at": "2026-06-28T08:12:43.609709+00:00",
+  "status": "Open",
+  "incident": {
+    "attack_type": "brute force",
+    "source_ip": "45.83.12.10",
+    "user": "admin",
+    "request": "/login failed login",
+    "raw_log": "2026-06-28 12:01:20 POST /login failed login source_ip=45.83.12.10 user=admin"
+  },
+  "iocs": {
+    "source_ip": "45.83.12.10",
+    "user": "admin",
+    "request": "/login failed login",
+    "attack_pattern": "Unknown"
+  },
+  "mitre_analysis": null,
+  "threat_intelligence": {
+    "intelligence_package": {
+      "incident": {
+        "attack_type": "brute force",
+        "source_ip": "45.83.12.10",
+        "user": "admin",
+        "request": "/login failed login",
+        "raw_log": "2026-06-28 12:01:20 POST /login failed login source_ip=45.83.12.10 user=admin"
+      },
+      "evidence": {
+        "ip_reputation": {
+          "found": true,
+          "ip": "45.83.12.10",
+          "reputation": "malicious",
+          "confidence": 90,
+          "reason": "Repeated brute force activity observed"
+        },
+        "cve_lookup": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        },
+        "cisa_kev": {
+          "found": false,
+          "message": "No CVE linked to this incident"
+        }
+      },
+      "risk_score": 35,
+      "priority": "Medium",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence."
+    },
+    "summary": {
+      "risk_score": 35,
+      "priority": "Medium",
+      "possible_zero_day": false,
+      "zero_day_note": "No zero-day indicator based on current evidence.",
+      "source_ip": "45.83.12.10",
+      "ip_reputation": "malicious",
+      "ip_confidence": 90,
+      "ip_reason": "Repeated brute force activity observed",
+      "cve_found": false,
+      "cve_id": "Not observed",
+      "cve_severity": "Not observed",
+      "kev_found": false,
+      "known_ransomware_use": "Not observed"
+    }
+  },
+  "remediation": {
+    "immediate_actions": [],
+    "investigation_actions": [],
+    "remediation_actions": [],
+    "recovery_actions": [],
+    "prevention_actions": [],
+    "owner_teams": [
+      "Security Team"
+    ]
+  },
+  "soc_decision": "Investigate Within 15 Minutes",
+  "executive_summary": "1. SOC Decision: Investigate Within 15 Minutes\n\n2. Executive Summary:\n   The case involves an incident where a user attempted to log in with the username 'admin' on the '/login' endpoint, resulting in a failed login attempt from the IP address 45.83.12.10. No CISA KEV match was found. The risk score is Medium and the source IP has a reputation of being malicious with an IP confidence level of 90%. Given the attack type and user credentials involved, this appears to be an attempted brute force attack on the '/login' endpoint. Further investigation will be conducted to confirm if there are any indicators of successful compromise.\n\n3. Confirmed Facts:\n   - The incident is a failed login attempt.\n   - The source IP address is 45.83.12.10.\n   - The user attempting to log in was 'admin'.\n   - The request made was '/login' with a status of failed.\n   - No Known Exploited Vulnerabilities (CISA KEV) match was found.\n   - There are no indications of successful compromise based on the evidence provided.\n\n4. Assumptions / Unknowns:\n   - It is assumed that this attempt does not indicate a successful brute force attack as there is no proof of compromise.\n   - The nature of the source IP and user credentials may provide additional context but are not sufficient to determine whether or not an actual compromise occurred without further investigation.\n\n5. Business Impact:\n   While no significant damage has been confirmed, such incidents can lead to unauthorized access and data theft if successful. Monitoring and securing login endpoints is crucial for preventing potential attacks that could result in a more severe impact.\n\n6. Immediate Next Steps:\n   - Monitor the network traffic around the attempted login event.\n   - Review any recent brute force attack detection alerts from other security systems.\n   - Conduct additional forensic analysis to confirm whether there have been any successful compromises or if this was an isolated incident.\n   - Update the Security Team\u2019s awareness of the ongoing investigation and potential mitigation steps.\n\n7. Confidence:\n   The SOC decision is based on the provided data, which suggests a possible brute force attack but lacks definitive proof of success. With no known vulnerabilities (CISA KEV) matching our findings and no indications of compromise so far, confidence in declaring this an 'attack attempt is confirmed' must be balanced against the risk posed by the attack type. Further investigation will provide more clarity on whether this was merely a failed login or part of a larger assault.",
+  "timeline": [
+    {
+      "time": "2026-06-28T08:12:43.609709+00:00",
+      "event": "Case created"
+    },
+    {
+      "time": "2026-06-28T08:12:43.609709+00:00",
+      "event": "IOC extraction completed"
+    },
+    {
+      "time": "2026-06-28T08:12:43.609709+00:00",
+      "event": "MITRE mapping completed"
+    },
+    {
+      "time": "2026-06-28T08:12:43.609709+00:00",
+      "event": "Threat intelligence completed"
+    },
+    {
+      "time": "2026-06-28T08:12:43.609709+00:00",
+      "event": "SOC decision generated"
+    },
+    {
+      "time": "2026-06-28T08:12:43.609709+00:00",
+      "event": "Remediation plan generated"
+    },
+    {
+      "time": "2026-06-28T08:13:35.855690+00:00",
+      "event": "Executive summary generated"
+    }
+  ]
+}
