@@ -10,7 +10,10 @@ class DecisionEngine:
         priority: str,
         possible_zero_day: bool,
         kev_found: bool,
+        attack_type: str = "",
     ):
+
+        attack_type = attack_type.lower()
 
         if possible_zero_day:
             return "Escalate Immediately"
@@ -21,6 +24,13 @@ class DecisionEngine:
         if risk_score >= 80:
             return "Escalate Immediately"
 
+        if attack_type in [
+            "sql injection",
+            "brute force",
+            "xss",
+        ]:
+            return "Investigate Within 15 Minutes"
+
         if risk_score >= 60:
             return "Investigate Within 15 Minutes"
 
@@ -30,10 +40,11 @@ class DecisionEngine:
 if __name__ == "__main__":
 
     decision = DecisionEngine.make_decision(
-        risk_score=70,
-        priority="High",
+        risk_score=35,
+        priority="Medium",
         possible_zero_day=False,
         kev_found=False,
+        attack_type="brute force",
     )
 
     print("\n=== DECISION ENGINE TEST ===")

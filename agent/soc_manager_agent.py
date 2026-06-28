@@ -49,6 +49,7 @@ class SOCManagerAgent(LLMAgent):
         priority=threat_package["priority"],
         possible_zero_day=threat_package["possible_zero_day"],
         kev_found=threat_package["evidence"]["cisa_kev"]["found"],
+        attack_type=incident.get("attack_type", ""),
     )
       case.add_timeline_event("SOC decision generated")
 
