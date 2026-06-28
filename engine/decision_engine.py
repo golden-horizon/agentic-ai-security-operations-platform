@@ -32,6 +32,9 @@ class DecisionEngine:
          "network anomaly",
          "impossible travel",
          "privilege escalation",
+         "blocked connection",
+         "port scan",
+         "suspicious outbound",
         ]:
             return "Investigate Within 15 Minutes"
 

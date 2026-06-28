@@ -15,3 +15,6 @@ enterprise-attack.json
 
 # Archive learning files
 archive/
+
+reports/cases/
+reports/*.json

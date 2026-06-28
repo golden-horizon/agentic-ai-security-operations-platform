@@ -3,6 +3,7 @@ from collectors.aws_collector import AWSCollector
 from collectors.azure_collector import AzureCollector
 from collectors.splunk_collector import SplunkCollector
 from collectors.linux_collector import LinuxCollector
+from collectors.firewall_collector import FirewallCollector
 
 class CollectorManager:
     """
@@ -16,6 +17,7 @@ class CollectorManager:
            AzureCollector(),
            SplunkCollector(),
            LinuxCollector(),
+        FirewallCollector(),
         ]     
 
     def collect_logs(self) -> list[str]:

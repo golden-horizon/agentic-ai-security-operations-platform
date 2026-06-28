@@ -47,5 +47,26 @@
   "mitre_id": "T1068",
   "patterns": ["privilege escalation"],
   "severity": "high"
+},
+{
+  "title": "Firewall Blocked Connection",
+  "attack_type": "blocked connection",
+  "mitre_id": "T1046",
+  "patterns": ["blocked connection"],
+  "severity": "medium"
+},
+{
+  "title": "Firewall Port Scan",
+  "attack_type": "port scan",
+  "mitre_id": "T1046",
+  "patterns": ["port scan detected"],
+  "severity": "high"
+},
+{
+  "title": "Suspicious Outbound Connection",
+  "attack_type": "suspicious outbound",
+  "mitre_id": "T1105",
+  "patterns": ["suspicious outbound connection"],
+  "severity": "high"
 }
 ]
