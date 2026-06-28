@@ -6,6 +6,7 @@ from rich.table import Table
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.text import Text
 
+
 console = Console()
 
 
@@ -152,3 +153,68 @@ def ioc_panel(iocs: dict) -> None:
         table.add_row(str(key), str(value))
 
     console.print(table)
+
+def remediation_table(remediation: dict):
+    table = Table(
+        title="Remediation Plan",
+        border_style="green",
+    )
+
+    table.add_column(
+        "Category",
+        style="bold green",
+        width=18,
+    )
+
+    table.add_column(
+        "Action",
+        style="white",
+    )
+
+    for item in remediation["immediate_actions"]:
+        table.add_row("Immediate", item)
+
+    for item in remediation["investigation_actions"]:
+        table.add_row("Investigation", item)
+
+    for item in remediation["remediation_actions"]:
+        table.add_row("Remediation", item)
+
+    for item in remediation["recovery_actions"]:
+        table.add_row("Recovery", item)
+
+    for item in remediation["prevention_actions"]:
+        table.add_row("Prevention", item)
+
+    console.print(table)   
+
+def timeline_table(timeline: list[dict]) -> None:
+    table = Table(
+        title="Case Timeline",
+        border_style="blue",
+    )
+
+    table.add_column(
+        "Step",
+        style="bold blue",
+        width=6,
+    )
+
+    table.add_column(
+        "Time",
+        style="white",
+    )
+
+    table.add_column(
+        "Event",
+        style="cyan",
+    )
+
+    for index, item in enumerate(timeline, start=1):
+        table.add_row(
+            str(index),
+            item["time"],
+            item["event"],
+        )
+
+    console.print(table)    

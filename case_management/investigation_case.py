@@ -22,6 +22,15 @@ class InvestigationCase:
         self.remediation = ""
         self.soc_decision = ""
         self.executive_summary = ""
+        self.timeline = []
+
+    def add_timeline_event(self, event: str) -> None:
+      self.timeline.append(
+        {
+            "time": datetime.now(timezone.utc).isoformat(),
+            "event": event,
+        }
+    )
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -35,6 +44,7 @@ class InvestigationCase:
             "remediation": self.remediation,
             "soc_decision": self.soc_decision,
             "executive_summary": self.executive_summary,
+            "timeline": self.timeline,
         }
 
 

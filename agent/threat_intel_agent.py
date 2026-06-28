@@ -1,57 +1,44 @@
-from agent.llm_agent import LLMAgent
 from intelligence.intelligence_manager import build_intelligence_package
 
 
-class ThreatIntelAgent(LLMAgent):
+class ThreatIntelAgent:
     """
-    Specialist agent for summarizing threat intelligence evidence.
-    It uses the Intelligence Manager, then explains the evidence clearly.
+    Structured threat intelligence agent.
+    Uses Intelligence Manager and returns facts, not paragraphs.
     """
 
     def analyze_threat_intel(self, incident: dict) -> dict:
         intelligence_package = build_intelligence_package(incident)
 
-        prompt = f"""
-You are a threat intelligence analyst.
-
-Your job is to explain the threat intelligence evidence for this incident.
-
-Important rules:
-- Do not make the final SOC decision.
-- Do not provide full remediation steps.
-- Focus only on threat intelligence evidence.
-- Separate direct evidence from enrichment evidence.
-- If no CVE is linked, clearly say no CVE evidence is available.
-- CISA KEV means Known Exploited Vulnerabilities.
-- Do not expand CISA KEV incorrectly.
-- If possible_zero_day is True, describe it as "possible zero-day or untracked exploit behavior".
-- Do not say confirmed zero-day unless explicitly confirmed.
-
-Intelligence Package:
-{intelligence_package}
-
-Return your answer in this structure:
-
-1. Threat Summary:
-2. Direct Evidence:
-3. Enrichment Evidence:
-4. Risk Score:
-5. Priority:
-6. Possible Zero-Day Assessment:
-7. Confidence:
-"""
-
-        summary = self.ask_llm(prompt)
+        evidence = intelligence_package["evidence"]
+        ip_reputation = evidence["ip_reputation"]
+        cve_lookup = evidence["cve_lookup"]
+        cisa_kev = evidence["cisa_kev"]
 
         return {
             "intelligence_package": intelligence_package,
-            "summary": summary,
+            "summary": {
+                "risk_score": intelligence_package["risk_score"],
+                "priority": intelligence_package["priority"],
+                "possible_zero_day": intelligence_package["possible_zero_day"],
+                "zero_day_note": intelligence_package["zero_day_note"],
+                "source_ip": ip_reputation.get("ip", "Not observed"),
+                "ip_reputation": ip_reputation.get("reputation", "unknown"),
+                "ip_confidence": ip_reputation.get("confidence", 0),
+                "ip_reason": ip_reputation.get("reason", "Not observed"),
+                "cve_found": cve_lookup.get("found", False),
+                "cve_id": cve_lookup.get("cve_id", "Not observed"),
+                "cve_severity": cve_lookup.get("severity", "Not observed"),
+                "kev_found": cisa_kev.get("found", False),
+                "known_ransomware_use": cisa_kev.get(
+                    "known_ransomware_use",
+                    "Not observed",
+                ),
+            },
         }
 
 
 if __name__ == "__main__":
-    from agent.display import agent_panel
-
     agent = ThreatIntelAgent()
 
     test_incident = {
@@ -62,4 +49,5 @@ if __name__ == "__main__":
 
     result = agent.analyze_threat_intel(test_incident)
 
-    agent_panel("Threat Intel Agent", result["summary"])
+    print("\n=== THREAT INTEL AGENT TEST ===")
+    print(result)
