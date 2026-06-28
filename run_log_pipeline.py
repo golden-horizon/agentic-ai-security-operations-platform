@@ -3,12 +3,14 @@ from pathlib import Path
 
 from agent.log_analysis_agent import LogAnalysisAgent
 from agent.soc_manager_agent import SOCManagerAgent
-from collectors.windows_collector import WindowsCollector
+from collectors.collector_manager import CollectorManager
+from case_management.case_repository import CaseRepository
 
 
 def main():
-    collector = WindowsCollector()
-    sample_logs = collector.collect_logs()
+    collector_manager = CollectorManager()
+    sample_logs = collector_manager.collect_logs()
+    repository = CaseRepository()
 
     log_agent = LogAnalysisAgent()
     soc_manager = SOCManagerAgent()
@@ -34,6 +36,8 @@ def main():
 
         investigation = soc_manager.investigate(incident)
         investigations.append(investigation)
+
+        repository.save_case(investigation)
 
         print(f"Attack Type : {incident['attack_type']}")
         print(f"Source IP   : {incident['source_ip']}")
