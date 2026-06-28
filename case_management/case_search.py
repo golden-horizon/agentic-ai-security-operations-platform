@@ -19,6 +19,7 @@ def show_case(case_id: str) -> None:
 
     incident = case.get("incident", {})
     threat_intel = case.get("threat_intelligence", {}).get("summary", {})
+    threat_enrichment = case.get("threat_enrichment", {})
     mitre = case.get("mitre_analysis", {})
 
     console.print(
@@ -45,6 +46,11 @@ Decision: {case.get("soc_decision")}
     table.add_row("MITRE Name", mitre.get("technique_name", "unknown"))
     table.add_row("Risk Score", str(threat_intel.get("risk_score", "unknown")))
     table.add_row("Priority", threat_intel.get("priority", "unknown"))
+    table.add_row("IP Reputation", threat_intel.get("ip_reputation", "unknown"))
+    table.add_row("IP Confidence", str(threat_intel.get("ip_confidence", "unknown")))
+    table.add_row("Country", threat_enrichment.get("country", "unknown"))
+    table.add_row("Local Reputation", threat_enrichment.get("reputation", "unknown"))
+    table.add_row("Threat Score", str(threat_enrichment.get("threat_score", "unknown")))
 
     console.print(table)
 

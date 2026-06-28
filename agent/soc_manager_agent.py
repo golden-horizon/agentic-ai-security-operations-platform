@@ -19,6 +19,7 @@ from agent.remediation_agent import RemediationAgent
 from agent.threat_intel_agent import ThreatIntelAgent
 from case_management.investigation_case import InvestigationCase
 from engine.decision_engine import DecisionEngine
+from threat_intel.ip_reputation import IPReputation
 
 
 class SOCManagerAgent(LLMAgent):
@@ -28,6 +29,7 @@ class SOCManagerAgent(LLMAgent):
         self.mitre_agent = MITREAgent()
         self.threat_intel_agent = ThreatIntelAgent()
         self.remediation_agent = RemediationAgent()
+        self.ip_reputation = IPReputation()
 
     def investigate(self, incident: dict, generate_summary: bool = True) -> dict:
       case = InvestigationCase(incident)
@@ -35,6 +37,10 @@ class SOCManagerAgent(LLMAgent):
 
       case.iocs = self.ioc_agent.extract_iocs(incident)
       case.add_timeline_event("IOC extraction completed")
+
+      source_ip = incident.get("source_ip", "unknown")
+      case.threat_enrichment = self.ip_reputation.lookup(source_ip)
+      case.add_timeline_event("Threat intelligence enrichment completed")
 
       case.mitre_analysis = self.mitre_agent.map_to_mitre(incident)
       case.add_timeline_event("MITRE mapping completed")
@@ -50,7 +56,7 @@ class SOCManagerAgent(LLMAgent):
         possible_zero_day=threat_package["possible_zero_day"],
         kev_found=threat_package["evidence"]["cisa_kev"]["found"],
         attack_type=incident.get("attack_type", ""),
-    )
+       )
       case.add_timeline_event("SOC decision generated")
 
       case.remediation = self.remediation_agent.recommend_actions(incident)

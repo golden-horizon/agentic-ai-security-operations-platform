@@ -1,0 +1,25 @@
+{
+  "45.83.12.10": {
+    "country": "Russia",
+    "reputation": "Malicious",
+    "threat_score": 95
+  },
+
+  "103.22.55.9": {
+    "country": "China",
+    "reputation": "Malicious",
+    "threat_score": 90
+  },
+
+  "18.222.44.10": {
+    "country": "United States",
+    "reputation": "Suspicious",
+    "threat_score": 70
+  },
+
+  "185.23.44.1": {
+    "country": "Unknown",
+    "reputation": "Suspicious",
+    "threat_score": 60
+  }
+}
