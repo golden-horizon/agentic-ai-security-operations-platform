@@ -3,14 +3,12 @@ from pathlib import Path
 
 from agent.log_analysis_agent import LogAnalysisAgent
 from agent.soc_manager_agent import SOCManagerAgent
+from collectors.windows_collector import WindowsCollector
 
 
 def main():
-    sample_logs = [
-        "2026-06-28 12:01:10 GET /login?username=admin' OR '1'='1 source_ip=103.22.55.9 user=guest",
-        "2026-06-28 12:01:20 POST /login failed login source_ip=45.83.12.10 user=admin",
-        "2026-06-28 12:01:30 GET /search?q=<script>alert(1)</script> source_ip=88.12.44.7 user=guest",
-    ]
+    collector = WindowsCollector()
+    sample_logs = collector.collect_logs()
 
     log_agent = LogAnalysisAgent()
     soc_manager = SOCManagerAgent()
