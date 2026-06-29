@@ -1,5 +1,7 @@
 # Agentic AI Security Operations Platform
 
+![License](https://img.shields.io/badge/License-MIT-green)
+
 An Agentic AI-powered Security Operations Platform that automates security investigations through a coordinated multi-agent workflow. The platform combines threat detection, threat intelligence enrichment, MITRE ATT&CK mapping, case management, FastAPI services, and a React dashboard to help analysts investigate and prioritize security incidents.
 
 The project demonstrates practical implementation of Agentic AI architectures, Model Context Protocol (MCP), Pydantic AI, multi-agent systems, and security automation within a modern Security Operations Center (SOC) environment.
