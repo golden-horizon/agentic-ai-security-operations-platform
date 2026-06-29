@@ -2,7 +2,7 @@ import json
 import os
 from datetime import datetime
 
-from agent_roles import AGENT_ROLES
+from agents.agent_roles import AGENT_ROLES
 
 
 class MultiAgentOrchestrator:
