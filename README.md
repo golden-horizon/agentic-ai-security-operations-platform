@@ -27,7 +27,7 @@ Each agent contributes specialized context before passing results to the next st
 
 ## Multi-Agent Workflow
 
-
+```text
 Security Event
       ↓
 Log Collection Agent
@@ -47,8 +47,9 @@ Case Management Agent
 Investigation Agent
       ↓
 Final Investigation Report
+```
 
-
+---
 
 ## Security Capabilities
 
